@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var hp_bar: ProgressBar = $HpBar
+@onready var spikes_wpn: Area2D = $Spikes
+@onready var glutton: Area2D = $Glutton
+
 signal take_damage_signal(damage:int)
 
 var ms = 200
@@ -13,13 +17,31 @@ var distance_travelled = 0
 var dash_on_cd = false;
 var dash_cd = 5;
 var dash_range = 100;
+var hp = 100
+var max_hp = 100
+var vulnerable = true
+var alive = true
 
 func _ready() -> void:
 	take_damage_signal.connect(take_damage)
 	click_pos = position
 	
 func take_damage(damage:int):
-	pass
+	if vulnerable && alive:
+		hp -= damage
+		hp_bar.value = hp
+		vulnerable = false
+		vulnerability_cd()
+	if hp <= 0:
+		hp = 0
+		die()
+
+func die():
+	queue_free()
+
+func vulnerability_cd():
+	await get_tree().create_timer(1).timeout
+	vulnerable = true
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move"):

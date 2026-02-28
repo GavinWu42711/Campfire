@@ -3,6 +3,22 @@
 [ext_resource type="Script" uid="uid://cfsnofqaa5msp" path="res://Scripts/player.gd" id="1_gntrk"]
 [ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="2_gntrk"]
 [ext_resource type="PackedScene" uid="uid://b6hs2xmivlalh" path="res://Scenes/Tentacles.tscn" id="3_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://dwrnit3xbeu4w" path="res://Scenes/Spikes.tscn" id="4_5ixxa"]
+[ext_resource type="PackedScene" uid="uid://c3h7oji1etkud" path="res://Scenes/Glutton.tscn" id="5_nn08x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewec"]
+bg_color = Color(0, 0.7278886, 0.079686366, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
 radius = 85.02353
@@ -13,8 +29,33 @@ script = ExtResource("1_gntrk")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=126056785]
 texture = ExtResource("2_gntrk")
 
+[node name="Tentacles" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
+position = Vector2(70, 0)
+scale = Vector2(0.3917232, 2.116013)
+monitoring = false
+monitorable = false
+
+[node name="HpBar" type="ProgressBar" parent="." unique_id=555031898]
+offset_left = -71.0
+offset_top = 59.0
+offset_right = 63.0
+offset_bottom = 86.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gntrk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dewec")
+value = 100.0
+
+[node name="Spikes" parent="." unique_id=954835427 instance=ExtResource("4_5ixxa")]
+visible = false
+scale = Vector2(1.506, 1.5)
+monitoring = false
+monitorable = false
+
+[node name="Glutton" parent="." unique_id=505521471 instance=ExtResource("5_nn08x")]
+visible = false
+position = Vector2(93, 0)
+scale = Vector2(0.88547325, 1.914584)
+monitoring = false
+monitorable = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")
-
-[node name="Area2D" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
-position = Vector2(110, 0)
