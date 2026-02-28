@@ -11,7 +11,7 @@ var is_attacking = false
 var is_dashing = false
 var distance_travelled = 0
 var dash_on_cd = false;
-var dash_cd = 0;
+var dash_cd = 5;
 var dash_range = 100;
 
 func _ready() -> void:
@@ -27,8 +27,9 @@ func _physics_process(delta: float) -> void:
 		is_attacking = false
 		is_dashing = false
 		distance_travelled = 0
+
 		
-	if position.distance_to(click_pos) > 3 && is_attacking == false && is_dashing == false:
+	if position.distance_to(click_pos) > 3 && is_dashing == false:
 		target_pos = (click_pos - position).normalized()
 		look_at(click_pos)
 		velocity = target_pos * ms
@@ -44,14 +45,14 @@ func _physics_process(delta: float) -> void:
 		if distance_travelled < dash_range:
 			velocity = ms * 3 * (target_pos - position).normalized()
 			move_and_slide()
-			distance_travelled += (ms * delta * 1.5) / 2
+			distance_travelled += (ms * delta * 3) / 2
 		else:
-			await get_tree().create_timer(dash_cd).timeout
-			dash_on_cd = false
-	else:
-		await get_tree().create_timer(dash_cd).timeout
-		dash_on_cd = false
-	
+			dash_start_cd()
+
+func dash_start_cd():
+	await get_tree().create_timer(dash_cd).timeout
+	dash_on_cd = false
+
 func dash():
 	if dash_on_cd == false:
 		target_pos = get_global_mouse_position()
