@@ -15,6 +15,10 @@ run/main_scene="uid://qo3sav52rfgd"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+Global="*uid://chjmsq0ys3527"
+
 [input]
 
 move={
