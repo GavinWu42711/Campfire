@@ -11,7 +11,8 @@ size = Vector2(151, 142)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=26514473 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox")]
 script = ExtResource("1_wovta")
-rotation_speed = 5.0
+move_speed = 100.0
+rotation_speed = 45.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 

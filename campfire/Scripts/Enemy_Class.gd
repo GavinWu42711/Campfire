@@ -72,13 +72,11 @@ func attack(attack_damage:int,hitbox_signal:Signal) -> void:
 #Chases the player if possible
 func chase_player(delta:float) -> void:
 	var player_pos:Vector2 = Global.player_pos
-	var enemy_pos:Vector2 = self.transform.get_origin()
-	
-	print(player_pos)
-	
+	var enemy_pos:Vector2 = self.global_position
+		
 	if player_pos != null: #Make sure the player pos has a value
 		#Apply rotation first
-		if enemy_pos.distance_to(player_pos) > follow_distance and rotation_speed != 0:
+		if enemy_pos.distance_to(player_pos) > 0 and enemy_pos.distance_to(player_pos) > follow_distance and rotation_speed != 0:
 			#Determine if the enemy should turn left or right based on the player's heading r
 			#relative to the enemy and the enemy's current rotation
 			
@@ -89,30 +87,48 @@ func chase_player(delta:float) -> void:
 			var alpha:float
 			var player_heading:float
 			
-			if dX > 0 and dY > 0: #Quadrant 1
-				alpha = tanh(dY/dX)
+			if dX > 0 and dY >= 0: #Quadrant 1
+				alpha = rad_to_deg(atan2(dY,dX))
 				player_heading = 90 - alpha 
-			elif dX < 0 and dY > 0: #Quadrant 2
-				alpha = 180 - tanh(dY/dX)
+				print("Q1")
+			elif dX < 0 and dY >= 0: #Quadrant 2
+				alpha = 180 - rad_to_deg(atan2(dY,dX))
 				player_heading = 270 + alpha
-			elif dX < 0 and dY < 0: #Quadrant 3
-				alpha = tanh(dY/dX)
+				print("Q2")
+			elif dX < 0 and dY <= 0: #Quadrant 3
+				alpha = 180 - abs(rad_to_deg(atan2(dY,dX)))
 				player_heading = 270 - alpha
-			elif dX > 0 and dY < 0: #Quadrant 4
-				alpha = 180 - tanh(dY/dX)
+				print("Q3")
+			elif dX > 0 and dY <= 0: #Quadrant 4
+				alpha = abs(rad_to_deg(atan2(dY,dX)))
 				player_heading = 90 + alpha
-				
-			#Difference in heading
-			var dOmega:float = abs(self.transform.get_rotation() - player_heading)
-			print(dOmega)
+				print("Q4")
+			elif dX == 0 and dY > 0: #Directly above
+				player_heading = 0
+			elif dX == 0 and dY < 0: #Directly below
+				player_heading = 180
 			
+			#If the difference is above 360
+			player_heading = player_heading - (int(player_heading / 360) * 360)
+			
+			var enemy_heading = self.rotation_degrees - (int(self.rotation_degrees / 360) * 360)
+			if enemy_heading < 0:
+				enemy_heading += 360
+			
+			#Difference in heading
+			var dOmega:float = player_heading - enemy_heading
+			if dOmega < 0:
+				dOmega += 360
+			
+			
+						
 			#Check difference in heading
 			if dOmega <= 180: #Turn right
-				self.rotation += rotation_speed * delta
+				self.rotation += deg_to_rad(rotation_speed) * delta
 			else: #Turn left
-				self.rotation -= rotation_speed * delta
+				self.rotation -= deg_to_rad(rotation_speed) * delta
 		
-		if move_speed != 0:
+		if enemy_pos.distance_to(player_pos) > follow_distance and move_speed != 0:
 			#Initial move forward vector
 			var forward_vector:Vector2 = Vector2.UP
 			
