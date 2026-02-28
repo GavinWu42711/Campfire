@@ -15,10 +15,17 @@ class_name Enemy
 @export var i_frame_length:float = 1 # in seconds
 @export var follow_distance = 0 #How closely to try and follow the player
 
-#Variables not to be set
+#Sprites and animations
+@export var animated_sprite:AnimatedSprite2D
+
+#Variables NOT to be set
+#Health and attacking
 var current_health:int
 var can_take_damage:bool = true
 var alive:bool = true
+
+#Sprites and animations
+enum ACTION {ATTACK,DE}
 
 #Signal for the enemy to take damage; helps with decoupling
 signal take_damage_signal(damage:int)
@@ -32,6 +39,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	chase_player(delta)
 	move_and_slide()
+	
+	print("Enemy health: " + str(current_health))
 
 #Makes the enemy take damage
 func take_damage(damage:int):
@@ -90,19 +99,15 @@ func chase_player(delta:float) -> void:
 			if dX > 0 and dY >= 0: #Quadrant 1
 				alpha = rad_to_deg(atan2(dY,dX))
 				player_heading = 90 - alpha 
-				print("Q1")
 			elif dX < 0 and dY >= 0: #Quadrant 2
 				alpha = 180 - rad_to_deg(atan2(dY,dX))
 				player_heading = 270 + alpha
-				print("Q2")
 			elif dX < 0 and dY <= 0: #Quadrant 3
 				alpha = 180 - abs(rad_to_deg(atan2(dY,dX)))
 				player_heading = 270 - alpha
-				print("Q3")
 			elif dX > 0 and dY <= 0: #Quadrant 4
 				alpha = abs(rad_to_deg(atan2(dY,dX)))
 				player_heading = 90 + alpha
-				print("Q4")
 			elif dX == 0 and dY > 0: #Directly above
 				player_heading = 0
 			elif dX == 0 and dY < 0: #Directly below
@@ -119,9 +124,7 @@ func chase_player(delta:float) -> void:
 			var dOmega:float = player_heading - enemy_heading
 			if dOmega < 0:
 				dOmega += 360
-			
-			
-						
+					
 			#Check difference in heading
 			if dOmega <= 180: #Turn right
 				self.rotation += deg_to_rad(rotation_speed) * delta

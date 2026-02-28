@@ -1,13 +1,3 @@
 [gd_scene format=3 uid="uid://cph5b8tf7gopg"]
 
-[ext_resource type="PackedScene" uid="uid://dxna8v8y0dhdi" path="res://Scenes/Enemy.tscn" id="1_idj7w"]
-[ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="2_kln2b"]
-
 [node name="Node2D" type="Node2D" unique_id=769676833]
-
-[node name="Enemy" parent="." unique_id=26514473 instance=ExtResource("1_idj7w")]
-
-[node name="Player" parent="." unique_id=642714803 instance=ExtResource("2_kln2b")]
-position = Vector2(249, 233)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1757398085]

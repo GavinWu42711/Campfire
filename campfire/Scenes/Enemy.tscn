@@ -9,12 +9,17 @@ size = Vector2(136, 125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xeo28"]
 size = Vector2(151, 142)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wovta"]
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=26514473 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox")]
 script = ExtResource("1_wovta")
 move_speed = 100.0
 rotation_speed = 45.0
+enemy_attack_damage = null
+max_health = null
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
+i_frame_length = null
 follow_distance = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1062647774]
@@ -29,3 +34,6 @@ shape = SubResource("RectangleShape2D_xeo28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=598342551]
 texture = ExtResource("1_m1htj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=711524141]
+sprite_frames = SubResource("SpriteFrames_wovta")
