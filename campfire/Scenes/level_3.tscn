@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cujkrcfb7tchr"]
+
+[ext_resource type="Texture2D" uid="uid://bwpe0nu51c1sg" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 2/orig_big.png" id="1_ng0s0"]
+
+[node name="Level3" type="Node2D" unique_id=423755762]
+
+[node name="OrigBig" type="Sprite2D" parent="." unique_id=2063815661]
+position = Vector2(-3, -5)
+texture = ExtResource("1_ng0s0")

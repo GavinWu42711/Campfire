@@ -19,6 +19,10 @@ config/icon="res://Assets/icon.svg"
 
 Global="*uid://chjmsq0ys3527"
 
+[dotnet]
+
+project/assembly_name="Campfire"
+
 [input]
 
 move={
