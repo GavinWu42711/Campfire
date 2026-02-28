@@ -7,7 +7,7 @@ signal take_damage_signal(damage:int)
 var ms = 200
 var click_pos = Vector2()
 var target_pos = Vector2()
-var is_attacking = false
+#var is_attacking = false
 var is_dashing = false
 var distance_travelled = 0
 var dash_on_cd = false;
@@ -24,7 +24,7 @@ func take_damage(damage:int):
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move"):
 		click_pos = get_global_mouse_position()
-		is_attacking = false
+		#is_attacking = false
 		is_dashing = false
 		distance_travelled = 0
 
