@@ -1,12 +1,17 @@
 extends CharacterBody2D
 
 #Variables to be set 
-@export var speed:float = 300.0
+#Movement 
+@export var move_speed:float = 300.0
+@export var rotation_speed:float = 100.0
+
+#Health and attacking
 @export var enemy_attack_damage:int = 10
 @export var max_health:int = 100
 @export var enemy_hitbox:Area2D
 @export var enemy_attack_hitbox:Area2D
 @export var i_frame_length:float = 1 # in seconds
+@export var follow_distance = 0 #How closely to try and follow the player
 
 #Variables not to be set
 var current_health:int
@@ -61,4 +66,8 @@ func check_attack_hitbox() -> void:
 #Deals damage to the player
 func attack(attack_damage:int,hitbox_signal:Signal) -> void:
 	hitbox_signal.emit(attack_damage)
+	
+#Chases the player if possible
+func chase_player(player_pos) -> void:
+	pass
 	

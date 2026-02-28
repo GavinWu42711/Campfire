@@ -28,3 +28,5 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+	
+	Global.player_pos = self.transform.get_origin()
