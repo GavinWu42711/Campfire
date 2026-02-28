@@ -36,8 +36,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 
+
 	Global.player_pos = self.transform.get_origin()
-	
+
 	if Input.is_action_just_pressed("dash"):
 		dash()
 	if is_dashing:
