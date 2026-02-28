@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3h7oji1etkud"]
 
 [ext_resource type="Script" uid="uid://b5i73gck28tkx" path="res://Scenes/glutton.gd" id="1_ojcnx"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_5ee8t"]
+[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="2_ojcnx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxa1p"]
 radius = 68.18358
@@ -10,7 +10,7 @@ radius = 68.18358
 script = ExtResource("1_ojcnx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130536545]
-texture = ExtResource("2_5ee8t")
+texture = ExtResource("2_ojcnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255091381]
 shape = SubResource("CircleShape2D_fxa1p")

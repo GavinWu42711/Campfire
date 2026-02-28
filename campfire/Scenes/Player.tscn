@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://r1lfrw2x34u4"]
 
 [ext_resource type="Script" uid="uid://cfsnofqaa5msp" path="res://Scripts/player.gd" id="1_gntrk"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="2_dewec"]
+[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="2_gntrk"]
 [ext_resource type="PackedScene" uid="uid://b6hs2xmivlalh" path="res://Scenes/Tentacles.tscn" id="3_5ixxa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
@@ -11,7 +11,7 @@ radius = 85.02353
 script = ExtResource("1_gntrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=126056785]
-texture = ExtResource("2_dewec")
+texture = ExtResource("2_gntrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")
