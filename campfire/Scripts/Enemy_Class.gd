@@ -76,7 +76,7 @@ func chase_player(delta:float) -> void:
 		
 	if player_pos != null: #Make sure the player pos has a value
 		#Apply rotation first
-		if enemy_pos.distance_to(player_pos) > 0 and enemy_pos.distance_to(player_pos) > follow_distance and rotation_speed != 0:
+		if enemy_pos.distance_to(player_pos) > 0 and rotation_speed != 0:
 			#Determine if the enemy should turn left or right based on the player's heading r
 			#relative to the enemy and the enemy's current rotation
 			
