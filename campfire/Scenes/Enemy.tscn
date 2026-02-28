@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dxna8v8y0dhdi"]
+
+[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="1_m1htj"]
+[ext_resource type="Script" uid="uid://dnnt8v46g2rvf" path="res://Scripts/EnemyTest.gd" id="1_wovta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wovta"]
+size = Vector2(136, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xeo28"]
+size = Vector2(151, 142)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=26514473 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox")]
+script = ExtResource("1_wovta")
+rotation_speed = 5.0
+enemy_hitbox = NodePath("CollisionShape2D")
+enemy_attack_hitbox = NodePath("Area2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1062647774]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_wovta")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1814409848]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=2049311234]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_xeo28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=598342551]
+texture = ExtResource("1_m1htj")

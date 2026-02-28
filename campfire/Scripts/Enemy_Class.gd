@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 #Variables to be set 
 #Movement 
 @export var move_speed:float = 300.0
-@export var rotation_speed:float = 100.0
+@export var rotation_speed:float = 1 #Degrees/s
 
 #Health and attacking
 @export var enemy_attack_damage:int = 10
 @export var max_health:int = 100
-@export var enemy_hitbox:Area2D
+@export var enemy_hitbox:CollisionShape2D
 @export var enemy_attack_hitbox:Area2D
 @export var i_frame_length:float = 1 # in seconds
 @export var follow_distance = 0 #How closely to try and follow the player
@@ -28,7 +30,7 @@ func _ready() -> void:
 
 #Run every second
 func _physics_process(delta: float) -> void:
-
+	chase_player(delta)
 	move_and_slide()
 
 #Makes the enemy take damage
@@ -68,6 +70,60 @@ func attack(attack_damage:int,hitbox_signal:Signal) -> void:
 	hitbox_signal.emit(attack_damage)
 	
 #Chases the player if possible
-func chase_player(player_pos) -> void:
-	pass
+func chase_player(delta:float) -> void:
+	var player_pos:Vector2 = Global.player_pos
+	var enemy_pos:Vector2 = self.transform.get_origin()
+	
+	print(player_pos)
+	
+	if player_pos != null: #Make sure the player pos has a value
+		#Apply rotation first
+		if enemy_pos.distance_to(player_pos) > follow_distance and rotation_speed != 0:
+			#Determine if the enemy should turn left or right based on the player's heading r
+			#relative to the enemy and the enemy's current rotation
+			
+			#Calculating player heading
+			var dX:float = player_pos.x - enemy_pos.x #Adjacent
+			var dY:float = -player_pos.y - (-enemy_pos.y) #Opposite
+			
+			var alpha:float
+			var player_heading:float
+			
+			if dX > 0 and dY > 0: #Quadrant 1
+				alpha = tanh(dY/dX)
+				player_heading = 90 - alpha 
+			elif dX < 0 and dY > 0: #Quadrant 2
+				alpha = 180 - tanh(dY/dX)
+				player_heading = 270 + alpha
+			elif dX < 0 and dY < 0: #Quadrant 3
+				alpha = tanh(dY/dX)
+				player_heading = 270 - alpha
+			elif dX > 0 and dY < 0: #Quadrant 4
+				alpha = 180 - tanh(dY/dX)
+				player_heading = 90 + alpha
+				
+			#Difference in heading
+			var dOmega:float = abs(self.transform.get_rotation() - player_heading)
+			print(dOmega)
+			
+			#Check difference in heading
+			if dOmega <= 180: #Turn right
+				self.rotation += rotation_speed * delta
+			else: #Turn left
+				self.rotation -= rotation_speed * delta
+		
+		if move_speed != 0:
+			#Initial move forward vector
+			var forward_vector:Vector2 = Vector2.UP
+			
+			#Apply speed
+			forward_vector = forward_vector * move_speed * delta
+			
+			#Apply rotation
+			forward_vector = forward_vector.rotated(self.rotation)
+			
+			#Apply vector
+			self.translate(forward_vector)
+		
+		
 	
