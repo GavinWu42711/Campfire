@@ -59,3 +59,10 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=392294217]
+zoom = Vector2(0.5, 0.5)
+limit_left = -5372
+limit_top = -2910
+limit_right = 5342
+limit_bottom = 3130
