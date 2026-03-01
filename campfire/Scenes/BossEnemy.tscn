@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://ifskh7gojkn7"]
+
+[ext_resource type="Script" uid="uid://b82s04dbmgjrk" path="res://Scenes/boss_enemy.gd" id="1_5rlto"]
+[ext_resource type="Texture2D" uid="uid://cbuwq386e2hsu" path="res://Assets/Sprites/New Project (6).png" id="2_7j2nt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfpgj"]
+radius = 408.7701
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lj6qe"]
+radius = 44.181442
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sgnn"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 4, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvdp1"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 642, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_465ee"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 1280, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rae7s"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 4, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l07ny"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 4, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umm1p"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 642, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0vst"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 4, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs7v1"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 4, 1080, 638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrkw2"]
+atlas = ExtResource("2_7j2nt")
+region = Rect2(0, 1280, 1080, 638)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmec3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sgnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvdp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_465ee")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rae7s")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l07ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umm1p")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0vst")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrkw2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j2nt"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_symrt"]
+bg_color = Color(0, 1, 0, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=112715314 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
+script = ExtResource("1_5rlto")
+rotation_speed = 0.0
+max_health = 1000
+enemy_hitbox = NodePath("CollisionShape2D")
+enemy_attack_hitbox = NodePath("Area2D")
+animated_sprite = NodePath("AnimatedSprite2D")
+hp_bar = NodePath("ProgressBar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=45402146]
+shape = SubResource("CircleShape2D_jfpgj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=886345134]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1300139805]
+shape = SubResource("CircleShape2D_lj6qe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1887805657]
+sprite_frames = SubResource("SpriteFrames_wmec3")
+animation = &"walk"
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=337678164]
+offset_left = -361.0
+offset_top = 345.0
+offset_right = 355.0
+offset_bottom = 372.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7j2nt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_symrt")

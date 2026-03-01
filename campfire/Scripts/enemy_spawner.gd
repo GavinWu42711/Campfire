@@ -14,6 +14,7 @@ var mermaid_staff_enemy:PackedScene = preload("res://Scenes/MermaidStaffEnemy.ts
 var mermaid_sword_enemy:PackedScene = preload("res://Scenes/MermaidSwordEnemy.tscn")
 var orca_enemy:PackedScene = preload("res://Scenes/OrcaEnemy.tscn")
 var shark_enemy:PackedScene = preload("res://Scenes/SharkEnemy.tscn")
+var boss_enemy:PackedScene = preload("res://Scenes/BossEnemy.tscn")
 
 #Compiled list of enemies
 var enemy_list = [anglerfish_enemy,
@@ -28,7 +29,8 @@ var enemy_list = [anglerfish_enemy,
 					mermaid_staff_enemy,  
 					mermaid_sword_enemy,  
 					orca_enemy, 
-					shark_enemy]
+					shark_enemy, 
+					boss_enemy]
 					
 enum ENEMY_ENUM {ANGLERFISH_ENEMY, #3
 						EEL_ENEMY, #3
@@ -42,7 +44,8 @@ enum ENEMY_ENUM {ANGLERFISH_ENEMY, #3
 						MERMAID_STAFF_ENEMY, #3
 						MERMAID_SWORD_ENEMY, #3
 						ORCA_ENEMY, #2 
-						SHARK_ENEMY} #2
+						SHARK_ENEMY,
+						BOSS_ENEMY} #2
 						
 var depth_1_enemy = [ENEMY_ENUM.BLUE_FISH_ENEMY,
 					ENEMY_ENUM.GREEN_FISH_ENEMY,
@@ -56,7 +59,7 @@ var depth_3_enemy = [ENEMY_ENUM.EEL_ENEMY,
 					ENEMY_ENUM.ALLIGATOR_ENEMY, 
 					ENEMY_ENUM.MERMAID_STAFF_ENEMY, 
 					ENEMY_ENUM.MERMAID_SWORD_ENEMY]
-var depth_4_enemy = []
+var depth_4_enemy = [ENEMY_ENUM.BOSS_ENEMY]
 
 #To determine what and when to spawn
 var spawn_handler_on:bool = false
@@ -152,7 +155,7 @@ func spawn_depth_3_wave() -> void:
 
 #Spawns 10 random enemies from depth 4 list
 func spawn_depth_4_wave() -> void:
-	for i in range(15):
+	for i in range(1):
 		spawn_enemy(depth_4_enemy.pick_random(), 4)
 
 
