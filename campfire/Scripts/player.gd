@@ -2,9 +2,14 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var hp_bar: ProgressBar = $HpBar
-@onready var spikes_wpn: Area2D = $Spikes
+@onready var spikes: Area2D = $Spikes
 @onready var glutton: Area2D = $Glutton
+@onready var tentacles: Area2D = $Tentacles
+@onready var hp_bar: ProgressBar = $HpBar
+@onready var button: Button = $CanvasLayer/ColorRect/Button
+@onready var button_2: Button = $CanvasLayer/ColorRect/Button2
+@onready var button_3: Button = $CanvasLayer/ColorRect/Button3
+@onready var start_selection: ColorRect = $CanvasLayer/ColorRect
 
 signal take_damage_signal(damage:int)
 
@@ -25,7 +30,8 @@ var alive = true
 func _ready() -> void:
 	take_damage_signal.connect(take_damage)
 	click_pos = position
-	
+	get_tree().paused = true
+
 func take_damage(damage:int):
 	print("supposed to take damage")
 	if vulnerable && alive:
@@ -82,3 +88,22 @@ func dash():
 		is_dashing = true
 		dash_on_cd = true
 		look_at(get_global_mouse_position())
+
+
+func _on_button_pressed() -> void:
+	spikes.process_mode = Node.PROCESS_MODE_INHERIT
+	spikes.visible = true
+	start_selection.visible = false
+	get_tree().paused = false
+
+func _on_button_2_pressed() -> void:
+	glutton.process_mode = Node.PROCESS_MODE_INHERIT
+	glutton.visible = true
+	start_selection.visible = false
+	get_tree().paused = false
+
+func _on_button_3_pressed() -> void:
+	tentacles.process_mode = Node.PROCESS_MODE_INHERIT
+	tentacles.visible = true
+	start_selection.visible = false
+	get_tree().paused = false
