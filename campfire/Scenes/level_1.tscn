@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cdv4s5gpbl3fy"]
+[gd_scene format=4 uid="uid://clydl34mgc5hh"]
 
 [ext_resource type="Texture2D" uid="uid://byan08c0126pq" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 4/orig_big.png" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://mihmftv63u4e" path="res://Assets/Tilesets and Backgrounds/TileMap (1).png" id="2_7p6j4"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6sdvi5cg481" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://dn01d51mmec8f" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
 [ext_resource type="AudioStream" uid="uid://bwcqex8qgha34" path="res://Assets/Audio/1 Minute Underwater Relaxing Scenery with ambience sound _ 4K.mp3" id="9_wrinw"]
-[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
 texture = ExtResource("2_7p6j4")

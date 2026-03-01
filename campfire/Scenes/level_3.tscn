@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cdcno6virmq45" path="res://Assets/Tilesets and Backgrounds/New Project (1) (2).png" id="4_vwg62"]
 [ext_resource type="PackedScene" uid="uid://csucldh8tf7yt" path="res://Scenes/SeaMine.tscn" id="6_qf6rc"]
 [ext_resource type="AudioStream" uid="uid://bewiciyc62ckp" path="res://Assets/Audio/documentary-grade-underwa-h2hoixg3.wav" id="7_53xsp"]
-[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="8_5e78q"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="8_5e78q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwg62"]
 texture = ExtResource("2_76ybr")

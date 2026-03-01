@@ -242,12 +242,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_dhquj")
 rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+hp_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=771748599]
 position = Vector2(-8, 0.5)
@@ -267,3 +268,7 @@ sprite_frames = SubResource("SpriteFrames_jpdp6")
 animation = &"walk"
 frame = 5
 frame_progress = 0.80636144
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1065757239]
+offset_right = 4.0
+offset_bottom = 27.0

@@ -64,6 +64,7 @@ var depth:int = 0
 var spawner_cooldown:float = 10 #How long before another wave of enemies should be spawn
 var spawn_next_wave:bool = false
 
+
 #Emit to start spawning
 signal start_spawning_signal(depth:int)
 
@@ -107,10 +108,11 @@ func start_spawner_countdown() -> void:
 
 #Spawns the enemy based in the enemy enum provided
 #Position of the enemy is randomized based on the player, with the range being relative to max and min distance
-func spawn_enemy(enemy_enum_int:int, max_distance:int = 1200, min_distance:int = 1000) -> void:
+func spawn_enemy(enemy_enum_int:int, enemy_depth:int = 0, max_distance:int = 1200, min_distance:int = 1000) -> void:
 	#Spawn the enemy
 	var enemy_scene:PackedScene = enemy_list[enemy_enum_int]
 	var enemy:Enemy = enemy_scene.instantiate()
+	enemy.enemy_depth = enemy_depth
 	
 	#Randomize where the enemy is using a random spot on a circle with a random radius
 	var player_global_pos:Vector2 = Global.player_pos
@@ -124,22 +126,22 @@ func spawn_enemy(enemy_enum_int:int, max_distance:int = 1200, min_distance:int =
 #Spawns 10 random enemies from depth 1 list
 func spawn_depth_1_wave() -> void:
 	for i in range(10):
-		spawn_enemy(depth_1_enemy.pick_random())
+		spawn_enemy(depth_1_enemy.pick_random(), 1)
 
 #Spawns 10 random enemies from depth 2 list
 func spawn_depth_2_wave() -> void:
 	for i in range(10):
-		spawn_enemy(depth_2_enemy.pick_random())
+		spawn_enemy(depth_2_enemy.pick_random(), 2)
 
 #Spawns 10 random enemies from depth 3 list
 func spawn_depth_3_wave() -> void:
 	for i in range(10):
-		spawn_enemy(depth_3_enemy.pick_random())
+		spawn_enemy(depth_3_enemy.pick_random(), 3)
 
 #Spawns 10 random enemies from depth 4 list
 func spawn_depth_4_wave() -> void:
 	for i in range(10):
-		spawn_enemy(depth_4_enemy.pick_random())
+		spawn_enemy(depth_4_enemy.pick_random(), 4)
 
 
 	
