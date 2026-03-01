@@ -244,6 +244,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
 script = ExtResource("1_dhquj")
+rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
@@ -253,7 +254,7 @@ position = Vector2(-8, 0.5)
 shape = SubResource("RectangleShape2D_a4202")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=703319564]
-collision_mask = 5
+collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=168850124]
 position = Vector2(38, -7)

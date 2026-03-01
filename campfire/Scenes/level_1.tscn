@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://cdv4s5gpbl3fy"]
+[gd_scene format=4 uid="uid://clydl34mgc5hh"]
 
 [ext_resource type="Texture2D" uid="uid://byan08c0126pq" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 4/orig_big.png" id="1_vk57k"]
 [ext_resource type="Texture2D" uid="uid://mihmftv63u4e" path="res://Assets/Tilesets and Backgrounds/TileMap (1).png" id="2_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="2_8ffim"]
 [ext_resource type="Texture2D" uid="uid://by68ikyxj23ka" path="res://Assets/Tilesets and Backgrounds/TileSet.png" id="3_6444e"]
 [ext_resource type="Texture2D" uid="uid://cdcno6virmq45" path="res://Assets/Tilesets and Backgrounds/New Project (1) (2).png" id="5_6444e"]
-[ext_resource type="PackedScene" path="res://Scenes/selection_screen.tscn" id="6_evi0p"]
-[ext_resource type="PackedScene" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
-[ext_resource type="PackedScene" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
+[ext_resource type="PackedScene" uid="uid://1qs6ffmyuihq" path="res://Scenes/selection_screen.tscn" id="6_evi0p"]
+[ext_resource type="PackedScene" uid="uid://bb6sdvi5cg481" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://dn01d51mmec8f" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
 texture = ExtResource("2_7p6j4")
