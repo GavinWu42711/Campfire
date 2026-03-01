@@ -146,7 +146,7 @@ func evolve():
 	Global.hp += 20
 	if Global.weapon == "glutton's bite":
 		up_gluttons_bite.emit()
-		Global.bite_damage += 10
+		Global.bite_damage += 30
 		Global.bite_attackspeed -= 0.2
 		character_body_2d.scale *= Global.bite_range
 	elif Global.weapon == "tentacles":
