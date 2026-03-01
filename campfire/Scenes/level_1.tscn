@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1qs6ffmyuihq" path="res://Scenes/selection_screen.tscn" id="6_evi0p"]
 [ext_resource type="PackedScene" uid="uid://bb6sdvi5cg481" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://dn01d51mmec8f" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
-[ext_resource type="AudioStream" uid="uid://bwcqex8qgha34" path="res://Assets/Audio/1 Minute Underwater Relaxing Scenery with ambience sound _ 4K.mp3" id="9_wrinw"]
+[ext_resource type="AudioStream" uid="uid://d4iemrqsysge4" path="res://Assets/Audio/8-Bit Ocean.wav" id="9_chwpn"]
 [ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
@@ -694,7 +694,7 @@ position = Vector2(-1, 0)
 polygon = PackedVector2Array(-5347, 273, -4624, 27, -4163, 3, -3639, 202, -3297, 194, -2884, 43, -2328, 11, -1930, 170, -1231, 194, -834, 43, -294, 43, 191, 194, 549, 194, 1121, -13, 1907, 114, 2869, 98, 3862, 82, 4180, 90, 4394, 59, 4990, 178, 5364, 202, 5761, 273, 5761, -3136, -5617, -3120, -5609, 225)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1376096894]
-stream = ExtResource("9_wrinw")
+stream = ExtResource("9_chwpn")
 autoplay = true
 script = ExtResource("10_chwpn")
 

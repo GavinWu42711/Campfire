@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwoqs4tr1ev8h"
+path="res://.godot/imported/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3-dd870090eebc2966332bd32f846c4a64.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3"
+dest_files=["res://.godot/imported/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3-dd870090eebc2966332bd32f846c4a64.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
