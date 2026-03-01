@@ -84,13 +84,13 @@ func transition_scene(new_level:int) -> void:
 		current_level = LEVEL.LEVEL_1
 	elif new_level == LEVEL.LEVEL_2:
 		get_tree().change_scene_to_packed(level_2_scene)
-		current_level = LEVEL.LEVEL_1
+		current_level = LEVEL.LEVEL_2
 	elif new_level == LEVEL.LEVEL_3:
 		get_tree().change_scene_to_packed(level_3_scene)
-		current_level = LEVEL.LEVEL_1
+		current_level = LEVEL.LEVEL_3
 	elif new_level == LEVEL.LEVEL_4:
 		get_tree().change_scene_to_packed(level_4_scene)
-		current_level = LEVEL.LEVEL_1
+		current_level = LEVEL.LEVEL_4
 	elif new_level == LEVEL.RESTART:
 		current_level = LEVEL.RESTART
 		reset_clear_cons()

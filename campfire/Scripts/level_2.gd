@@ -8,6 +8,7 @@ func _ready() -> void:
 		SceneHandler.level_2_loaded = true
 	EnemySpawner.start_spawning_signal.emit(2)
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
