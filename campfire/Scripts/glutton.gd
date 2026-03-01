@@ -29,3 +29,7 @@ func _on_upgrade_glutton_plus_lifesteal(num: float) -> void:
 
 func _on_upgrade_glutton_plus_range(num: float) -> void:
 	glutton.scale *= num
+
+func _on_character_body_2d_up_gluttons_bite() -> void:
+	damage += 10
+	attackspeed -= 0.2

@@ -7,6 +7,7 @@ process_mode = 2
 script = ExtResource("1_t4uyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=751269727]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=629189031]
 offset_right = 1154.0

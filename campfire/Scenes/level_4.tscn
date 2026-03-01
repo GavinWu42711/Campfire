@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dlxd05ga5pfr4" path="res://Assets/Tilesets and Backgrounds/New Project (5).png" id="4_wk15n"]
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="5_wk15n"]
 [ext_resource type="PackedScene" uid="uid://csucldh8tf7yt" path="res://Scenes/SeaMine.tscn" id="6_5a8oa"]
+[ext_resource type="AudioStream" uid="uid://bewiciyc62ckp" path="res://Assets/Audio/documentary-grade-underwa-h2hoixg3.wav" id="8_5a8oa"]
+[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="9_3ntyy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvrgg"]
 texture = ExtResource("2_kdkq3")
@@ -1119,3 +1121,8 @@ scale = Vector2(3, 3)
 [node name="SeaMine5" parent="." unique_id=1291427449 instance=ExtResource("6_5a8oa")]
 position = Vector2(-1236, -1692)
 scale = Vector2(3, 3)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=902616983]
+stream = ExtResource("8_5a8oa")
+autoplay = true
+script = ExtResource("9_3ntyy")

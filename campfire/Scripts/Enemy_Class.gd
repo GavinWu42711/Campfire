@@ -114,6 +114,7 @@ func take_damage(damage:int):
 		
 		#Apply damage
 		current_health -= damage
+		print(current_health)
 		queue_animation(ACTION.HURT)
 		
 		if current_health <= 0:

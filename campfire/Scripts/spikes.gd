@@ -4,9 +4,9 @@ extends Area2D
 
 var attackspeed = 1.5
 var can_attack = true
-var damage = 5
-var spikes = 10
-var spike_rounds = 1
+var damage = 7
+var spikes = 1
+var spike_waves = 1
 var spike_burst_cd = 5
 var spikes_on_cd = false
 var shooting_spikes = false
@@ -36,7 +36,7 @@ func spike_burst():
 	shooting_spikes = true
 	if spikes_on_cd == false:
 		spikes_on_cd = true
-		for z in spike_rounds:
+		for z in spike_waves:
 			for i in spikes:
 				var bullet = preload("res://Scenes/spike_proj.tscn")
 				var new_bullet = bullet.instantiate()
@@ -63,3 +63,8 @@ func _on_character_body_2d_take_damage_signal(damage: int) -> void:
 	chance = randi_range(1, 100)
 	if chance <= burst_chance:
 		spike_burst()
+
+func _on_character_body_2d_up_spikes() -> void:
+	damage += 5
+	spikes += 1
+	spike_waves += 1
