@@ -14,6 +14,7 @@ class_name Enemy
 @export var enemy_attack_hitbox:Area2D
 @export var i_frame_length:float = 1 # in seconds
 @export var follow_distance = 0 #How closely to try and follow the player
+@export var attack_cooldown:float = 1 # in seconds
 
 #Sprites and animations
 @export var animated_sprite:AnimatedSprite2D
@@ -23,6 +24,7 @@ class_name Enemy
 var current_health:int
 var can_take_damage:bool = true
 var alive:bool = true
+var can_attack:bool = true
 
 #Sprites and animations
 enum ACTION {ATTACK,DEATH,HURT,IDLE,WALK}
@@ -77,12 +79,20 @@ func die() -> void:
 func check_attack_hitbox() -> void:
 	for body in enemy_attack_hitbox.get_overlapping_bodies():
 		if body is Player:
-			attack(enemy_attack_damage,body.take_damage_signal)
+			if can_attack:
+				can_attack = false
+				attack(enemy_attack_damage,body.take_damage_signal)
+				start_attack_cooldown(attack_cooldown)
 
 #Deals damage to the player
 func attack(attack_damage:int,hitbox_signal:Signal) -> void:
 	hitbox_signal.emit(attack_damage)
 	queue_animation(ACTION.ATTACK)
+	
+#Attack cooldown for enemies
+func start_attack_cooldown(cooldown_length:float) -> void:
+	await get_tree().create_timer(cooldown_length).timeout
+	can_attack = true
 	
 #Chases the player if possible
 func chase_player(delta:float) -> void:
