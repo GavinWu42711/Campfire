@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 func _ready():
 	$AnimatedSprite2D.play("Dormant")
-	random_scale = randf_range(3, 8)#size range
+	random_scale = randf_range(2.5, 7.5)#size range
 	scale = Vector2(random_scale, random_scale)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
