@@ -160,6 +160,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6yp7"]
+bg_color = Color(0.94427156, 0, 0.22820643, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vb6i"]
+bg_color = Color(0, 0.69803923, 0.22745098, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=380869770 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_n6yp7")
 enemy_attack_damage = 1
@@ -187,10 +197,12 @@ rotation = -1.5705347
 sprite_frames = SubResource("SpriteFrames_6hsfr")
 animation = &"walk"
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=371967342]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=630166171]
 offset_left = 10.0
 offset_top = 14.0
-offset_right = 61.0
+offset_right = 95.679405
 offset_bottom = 41.0
 rotation = 4.712389
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
+theme_override_styles/background = SubResource("StyleBoxFlat_n6yp7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7vb6i")

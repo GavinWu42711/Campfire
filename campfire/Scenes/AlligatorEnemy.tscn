@@ -209,6 +209,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv7cr"]
+bg_color = Color(0.94427156, 0, 0.22820643, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7l0p"]
+bg_color = Color(0, 0.69803923, 0.22745098, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=327834147 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_jv7cr")
 enemy_hitbox = NodePath("CollisionShape2D")
@@ -242,3 +252,5 @@ offset_top = 40.0
 offset_right = 123.0
 offset_bottom = 67.0
 rotation = 4.712389
+theme_override_styles/background = SubResource("StyleBoxFlat_jv7cr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g7l0p")

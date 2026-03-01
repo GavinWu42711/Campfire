@@ -209,6 +209,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubog1"]
+bg_color = Color(0.94427156, 0, 0.22820643, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7w68y"]
+bg_color = Color(0, 0.69803923, 0.22745098, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=969061591 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_ubog1")
 rotation_speed = 0.0
@@ -234,8 +244,10 @@ animation = &"attack"
 frame = 5
 frame_progress = 1.0
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1986584314]
-offset_left = -51.0
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2142626927]
+offset_left = -55.0
 offset_top = 23.0
-offset_right = 56.0
+offset_right = 57.0
 offset_bottom = 50.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ubog1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7w68y")

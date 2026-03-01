@@ -200,6 +200,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkiwn"]
+bg_color = Color(0.94427156, 0, 0.22820643, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5227e"]
+bg_color = Color(0, 0.69803923, 0.22745098, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_xkiwn")
 enemy_hitbox = NodePath("CollisionShape2D")
@@ -229,9 +239,11 @@ animation = &"attack"
 frame = 5
 frame_progress = 1.0
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=996594160]
-offset_left = 34.0
-offset_top = 55.0
-offset_right = 141.0
-offset_bottom = 82.0
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1850729157]
+offset_left = 30.0
+offset_top = 57.0
+offset_right = 139.60333
+offset_bottom = 84.0
 rotation = 4.712389
+theme_override_styles/background = SubResource("StyleBoxFlat_xkiwn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5227e")
