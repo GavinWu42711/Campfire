@@ -646,8 +646,8 @@ sources/3 = SubResource("TileSetAtlasSource_53xsp")
 [node name="Level3" type="Node2D" unique_id=423755762]
 
 [node name="OrigBig" type="Sprite2D" parent="." unique_id=2063815661]
-position = Vector2(13.7777605, 15.749977)
-scale = Vector2(7, 7.062)
+position = Vector2(150, 33.999992)
+scale = Vector2(4.793084, 4.835538)
 texture = ExtResource("1_ng0s0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1084803155]
