@@ -118,7 +118,7 @@ func dot_handler() -> void:
 					die()
 	
 func dot_dmg_timeout() -> void:
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(100).timeout
 	can_take_dot = true
 	
 func dot_timeout() -> void:
