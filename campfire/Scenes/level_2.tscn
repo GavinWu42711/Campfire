@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cpoa22nhn0add" path="res://Assets/Tilesets and Backgrounds/image-removebg-preview (2).png" id="5_v36qu"]
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="6_cggpd"]
 [ext_resource type="PackedScene" uid="uid://fp5n6ftanfvt" path="res://Scenes/volcano.tscn" id="7_055b2"]
-[ext_resource type="AudioStream" uid="uid://bwcqex8qgha34" path="res://Assets/Audio/1 Minute Underwater Relaxing Scenery with ambience sound _ 4K.mp3" id="8_2mgoq"]
+[ext_resource type="AudioStream" uid="uid://d4iemrqsysge4" path="res://Assets/Audio/8-Bit Ocean.wav" id="8_uhnj4"]
 [ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="9_uhnj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_055b2"]
@@ -872,6 +872,6 @@ position = Vector2(-4366, 796.0001)
 rotation = 0.21118484
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1832488326]
-stream = ExtResource("8_2mgoq")
+stream = ExtResource("8_uhnj4")
 autoplay = true
 script = ExtResource("9_uhnj4")

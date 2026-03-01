@@ -21,6 +21,10 @@ Global="*uid://chjmsq0ys3527"
 EnemySpawner="*uid://chbskor58s0mx"
 SceneHandler="*uid://dca0jch7vav0r"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Campfire"

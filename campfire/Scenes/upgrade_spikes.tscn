@@ -1,36 +1,45 @@
 [gd_scene format=3 uid="uid://ddoe248tjh7ao"]
 
-[ext_resource type="Script" uid="uid://60u50u3lcsy" path="res://Scripts/upgrade_spikes.gd" id="1_np2pn"]
+[ext_resource type="Script" path="res://Scripts/upgrade_spikes.gd" id="1_np2pn"]
 
 [node name="UpgradeScreenSpikes" type="Node2D" unique_id=179100804]
 script = ExtResource("1_np2pn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998554934]
 process_mode = 2
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1690086712]
-offset_right = 1154.0
-offset_bottom = 675.0
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.53333336)
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1888085844]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 282.0
-offset_right = 307.0
-offset_bottom = 402.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7369792
+anchor_top = 0.46296296
+anchor_right = 0.7369792
+anchor_bottom = 0.46296296
+offset_right = 191.0
+offset_bottom = 77.0
 theme_override_font_sizes/font_size = 50
 text = "+Spikes"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=1669636594]
-layout_mode = 0
-offset_left = 413.0
-offset_top = 209.0
-offset_right = 690.0
-offset_bottom = 493.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4204759
+anchor_top = 0.30555555
+anchor_right = 0.4204759
+anchor_bottom = 0.30555555
+offset_right = 277.0
+offset_bottom = 284.0
 theme_override_font_sizes/font_size = 50
 text = "+Chance to
 activate
@@ -39,11 +48,16 @@ when hit"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button3" type="Button" parent="CanvasLayer/ColorRect" unique_id=1085624555]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 232.0
-offset_right = 1097.0
-offset_bottom = 434.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114583336
+anchor_top = 0.4033333
+anchor_right = 0.114583336
+anchor_bottom = 0.4033333
+offset_right = 297.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Lower spike
 shots cd"

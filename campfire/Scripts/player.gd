@@ -24,40 +24,49 @@ var distance_travelled = 0
 var dash_on_cd = false;
 var dash_cd = 5;
 var dash_range = 100;
-var hp = 100
 var max_hp = 100
 var vulnerable = true
 var alive = true
-var weapon_type
 
 func _ready() -> void:
 	take_damage_signal.connect(take_damage)
 	click_pos = position
+	if Global.weapon == "glutton's bite":
+		glutton.process_mode = Node.PROCESS_MODE_INHERIT
+		glutton.visible = true
+	elif Global.weapon == "tentacles":
+		tentacles.process_mode = Node.PROCESS_MODE_INHERIT
+		tentacles.visible = true
+	elif Global.weapon == "spikes":
+		spikes.process_mode = Node.PROCESS_MODE_INHERIT
+		spikes.visible = true
 
 func _on_selection_screen_choose_glutton_signal() -> void:
 	glutton.process_mode = Node.PROCESS_MODE_INHERIT
 	glutton.visible = true
-	weapon_type = "glutton's bite"
+	Global.weapon = "glutton's bite"
+	glutton.scale *= Global.bite_range
 
 func _on_selection_screen_choose_spikes_signal() -> void:
 	spikes.process_mode = Node.PROCESS_MODE_INHERIT
 	spikes.visible = true
-	weapon_type = "spikes"
+	Global.weapon = "spikes"
 
 func _on_selection_screen_choose_tentacles_signal() -> void:
 	tentacles.process_mode = Node.PROCESS_MODE_INHERIT
 	tentacles.visible = true
-	weapon_type = "tentacles"
+	Global.weapon = "tentacles"
+	tentacles.scale *= Global.tent_range
 
 func take_damage(damage:int):
 	print("supposed to take damage")
 	if vulnerable && alive:
-		hp -= damage
-		hp_bar.value = hp
+		Global.hp -= damage
+		hp_bar.value = Global.hp
 		vulnerable = false
 		vulnerability_cd()
-	if hp <= 0:
-		hp = 0
+	if Global.hp <= 0:
+		Global.hp = 0
 		die()
 
 func die():
@@ -105,23 +114,21 @@ func dash():
 		dash_on_cd = true
 		look_at(get_global_mouse_position())
 
-func _on_glutton_lifesteal_hp(num: float) -> void:
-	hp += num
-	if hp > 100:
-		hp_bar.value = 100
-	else:
-		hp_bar.value = hp
-
 func evolve():
-	if weapon_type == "glutton's bite":
+	if Global.weapon == "glutton's bite":
 		upgrade_glutton.visible = true
 		get_tree().paused = true
-		up_gluttons_bite.emit()
-	elif weapon_type == "tentacles":
+		Global.bite_damage += 10
+		Global.bite_attackspeed -= 0.2
+	elif Global.weapon == "tentacles":
 		upgrade_tentacles.visible = true
 		get_tree().paused = true
-		up_tentacles.emit()
+		Global.tent_damage += 5
+		Global.tentacles += 1
 	else:
+		Global.spike_burst_unlocked = true
 		upgrade_screen_spikes.visible = true
 		get_tree().paused = true
-		up_spikes.emit()
+		Global.spikes += 1
+		Global.spike_damage += 4
+		Global.spike_waves += 1
