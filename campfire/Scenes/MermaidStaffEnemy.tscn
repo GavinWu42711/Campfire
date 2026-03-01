@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://x2tj2h30ckih"]
 
 [ext_resource type="Texture2D" uid="uid://cg2cyb3d13q7h" path="res://Assets/Sprites/Mermaid Enemy 1/Attack.png" id="1_x72jb"]
-[ext_resource type="Script" uid="uid://xuv77lf0ou75" path="res://Scripts/mermaid_staff_enemy.gd" id="1_ymb7h"]
+[ext_resource type="Script" path="res://Scripts/mermaid_staff_enemy.gd" id="1_ymb7h"]
 [ext_resource type="Texture2D" uid="uid://mx1pbb1jmuil" path="res://Assets/Sprites/Mermaid Enemy 1/Death.png" id="2_ymb7h"]
 [ext_resource type="Texture2D" uid="uid://i7p8gyic561t" path="res://Assets/Sprites/Mermaid Enemy 1/Hurt.png" id="3_pvhbl"]
 [ext_resource type="Texture2D" uid="uid://0wye73h2hr3e" path="res://Assets/Sprites/Mermaid Enemy 1/Idle.png" id="4_77vwn"]
@@ -209,12 +209,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1223103184 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1223103184 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_ymb7h")
 rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+hp_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152701026]
 position = Vector2(-6, -0.5)
@@ -231,3 +232,10 @@ sprite_frames = SubResource("SpriteFrames_4l72e")
 animation = &"attack"
 frame = 5
 frame_progress = 1.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=52399769]
+offset_left = -23.0
+offset_top = 23.0
+offset_right = 45.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)

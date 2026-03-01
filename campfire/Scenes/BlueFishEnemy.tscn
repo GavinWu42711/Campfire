@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyhq67wl1ojvm"]
 
-[ext_resource type="Script" uid="uid://j4kh8v06reu" path="res://Scripts/blue_fish_enemy.gd" id="1_fvxlg"]
+[ext_resource type="Script" path="res://Scripts/blue_fish_enemy.gd" id="1_fvxlg"]
 [ext_resource type="Texture2D" uid="uid://cv6nf45xh4clk" path="res://Assets/Sprites/Fish Enemy/Enemy_Attack.png" id="1_tn7su"]
 [ext_resource type="Texture2D" uid="uid://ckt6ic0wm1r13" path="res://Assets/Sprites/Fish Enemy/Enemy_Death.png" id="2_fvxlg"]
 [ext_resource type="Texture2D" uid="uid://dtq6goy02y4de" path="res://Assets/Sprites/Fish Enemy/Enemy_Hurt.png" id="3_rvsjg"]
@@ -202,12 +202,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=46626076 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=46626076 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_fvxlg")
 rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+hp_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1239632584]
 position = Vector2(-2, 0.5)
@@ -226,3 +227,9 @@ sprite_frames = SubResource("SpriteFrames_pgb2l")
 animation = &"attack"
 frame = 4
 frame_progress = 1.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1216826014]
+offset_left = -47.0
+offset_top = 22.0
+offset_right = 9.0
+offset_bottom = 49.0

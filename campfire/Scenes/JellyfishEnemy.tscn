@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwmfe0p18b21h"]
 
-[ext_resource type="Script" uid="uid://b0s4c6vbq1dw" path="res://Scripts/JellyfishEnemy.gd" id="1_lpvdh"]
+[ext_resource type="Script" path="res://Scripts/JellyfishEnemy.gd" id="1_lpvdh"]
 [ext_resource type="Texture2D" uid="uid://ciqmi0eft46h7" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Attack.png" id="2_bvjdp"]
 [ext_resource type="Texture2D" uid="uid://ny8svstch3k0" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Death.png" id="3_tt7iq"]
 [ext_resource type="Texture2D" uid="uid://udiro3rghrxj" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Hurt.png" id="4_8k4d2"]
@@ -186,12 +186,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_lpvdh")
 rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+hp_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=915685406]
 position = Vector2(-2.5, 2.5)
@@ -209,3 +210,9 @@ position = Vector2(-0.5, -0.9999924)
 scale = Vector2(2.8125, 2.6250005)
 sprite_frames = SubResource("SpriteFrames_6dmu0")
 animation = &"attack"
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=989153591]
+offset_left = -34.0
+offset_top = 44.0
+offset_right = 29.0
+offset_bottom = 71.0
