@@ -42,49 +42,9 @@ func _physics_process(delta: float) -> void:
 	chase_player(delta)
 	check_attack_hitbox()
 	move_and_slide()
+	animation_handler()
 	
 	print("Enemy health: " + str(current_health))
-
-#Try to queue an animation
-func queue_animation(animation_action:int) -> void:
-	queued_enemy_animation[animation_action] = true
-
-#Reset booleans for current_enemy_animation
-func reset_current_animations() -> void:
-	for i in range(len(current_enemy_animation)):
-		current_enemy_animation[i] = true
-
-func current_animation_logic() -> void:
-	if not current_enemy_animation[ACTION.DEATH]:
-		if queued_enemy_animation[ACTION.DEATH]:
-			reset_current_animations()
-			current_enemy_animation[ACTION.DEATH] = true
-			queued_enemy_animation[ACTION.DEATH] = false
-		elif not current_enemy_animation[ACTION.HURT]:
-			if queued_enemy_animation[ACTION.HURT]:
-				reset_current_animations()
-				current_enemy_animation[ACTION.HURT] = true
-				queued_enemy_animation[ACTION.HURT] = false
-			elif not current_enemy_animation[ACTION.ATTACK]:
-				if queued_enemy_animation[ACTION.ATTACK]:
-					reset_current_animations()
-					current_enemy_animation[ACTION.ATTACK] = true
-					queued_enemy_animation[ACTION.ATTACK] = false
-				elif not current_enemy_animation[ACTION.WALK]:
-					if queued_enemy_animation[ACTION.WALK]:
-						reset_current_animations()
-						current_enemy_animation[ACTION.WALK] = true
-						queued_enemy_animation[ACTION.WALK] = false
-					elif not current_enemy_animation[ACTION.IDLE]:
-						if queued_enemy_animation[ACTION.IDLE]:
-							reset_current_animations()
-							current_enemy_animation[ACTION.IDLE] = true
-							queued_enemy_animation[ACTION.IDLE] = false
-
-#Changes the animation of the enemy depending on the action they're supposed to have
-func animation_handler() -> void:
-	current_animation_logic()
-	
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
@@ -98,6 +58,7 @@ func take_damage(damage:int):
 		
 		#Apply damage
 		current_health -= damage
+		queue_animation(ACTION.HURT)
 		
 		if current_health <= 0:
 			current_health = 0
@@ -111,7 +72,7 @@ func take_damage_cooldown(cooldown_length) -> void:
 
 #When the enemy dies
 func die() -> void:
-	pass
+	queue_animation(ACTION.DEATH)
 	
 #Checks if any player hitboxes are in range
 func check_attack_hitbox() -> void:
@@ -122,15 +83,17 @@ func check_attack_hitbox() -> void:
 #Deals damage to the player
 func attack(attack_damage:int,hitbox_signal:Signal) -> void:
 	hitbox_signal.emit(attack_damage)
+	queue_animation(ACTION.ATTACK)
 	
 #Chases the player if possible
 func chase_player(delta:float) -> void:
 	var player_pos:Vector2 = Global.player_pos
 	var enemy_pos:Vector2 = self.global_position
+	var dOmega:float
 		
 	if player_pos != null: #Make sure the player pos has a value
 		#Apply rotation first
-		if enemy_pos.distance_to(player_pos) > 0 and rotation_speed != 0:
+		if enemy_pos.distance_to(player_pos) > 0:
 			#Determine if the enemy should turn left or right based on the player's heading r
 			#relative to the enemy and the enemy's current rotation
 			
@@ -166,17 +129,21 @@ func chase_player(delta:float) -> void:
 				enemy_heading += 360
 			
 			#Difference in heading
-			var dOmega:float = player_heading - enemy_heading
+			dOmega = player_heading - enemy_heading
 			if dOmega < 0:
 				dOmega += 360
 					
-			#Check difference in heading
-			if dOmega <= 180: #Turn right
-				self.rotation += deg_to_rad(rotation_speed) * delta
-			else: #Turn left
-				self.rotation -= deg_to_rad(rotation_speed) * delta
+			if rotation_speed != 0:
+				#Check difference in heading
+				if dOmega <= 180: #Turn right
+					self.rotation += deg_to_rad(rotation_speed) * delta
+				else: #Turn left
+					self.rotation -= deg_to_rad(rotation_speed) * delta
+				dOmega = self.rotation_degrees
+			else:
+				dOmega = player_heading
 		
-		if enemy_pos.distance_to(player_pos) > follow_distance and move_speed != 0:
+		if enemy_pos.distance_to(player_pos) > follow_distance and enemy_pos.distance_to(player_pos) > 0:
 			#Initial move forward vector
 			var forward_vector:Vector2 = Vector2.UP
 			
@@ -184,9 +151,99 @@ func chase_player(delta:float) -> void:
 			forward_vector = forward_vector * move_speed * delta
 			
 			#Apply rotation
-			forward_vector = forward_vector.rotated(self.rotation)
+			forward_vector = forward_vector.rotated(deg_to_rad(dOmega))
 			
 			#Apply vector
 			self.translate(forward_vector)
+					
+		queue_animation(ACTION.WALK)
 		
+	else:
+		queue_animation(ACTION.IDLE)
+#Try to queue an animation
+func queue_animation(animation_action:int) -> void:
+	queued_enemy_animation[animation_action] = true
+
+#Reset booleans for current_enemy_animation
+func reset_current_animations() -> void:
+	for i in range(len(current_enemy_animation)):
+		current_enemy_animation[i] = false
+
+#Reset booleans for queued_enemy_animation
+func reset_queued_animations() -> void:		
+	for i in range(len(queued_enemy_animation)):
+		queued_enemy_animation[i] = false
+		
+func stop_animation() -> void:
+	if animated_sprite.is_playing():
+		animated_sprite.stop()
 	
+#Changes the animation of the enemy depending on the action they're queued to have and currently are doing
+func animation_handler() -> void:
+	print(queued_enemy_animation)
+	if not current_enemy_animation[ACTION.DEATH]:
+		
+		if queued_enemy_animation[ACTION.DEATH]:
+			stop_animation()	
+			reset_current_animations()
+			current_enemy_animation[ACTION.DEATH] = true
+			queued_enemy_animation[ACTION.DEATH] = false
+			death_animation()
+			
+		elif not current_enemy_animation[ACTION.HURT]:
+			if queued_enemy_animation[ACTION.HURT]:
+				stop_animation()
+				reset_current_animations()
+				current_enemy_animation[ACTION.HURT] = true
+				queued_enemy_animation[ACTION.HURT] = false
+				hurt_animation()
+				
+			elif not current_enemy_animation[ACTION.ATTACK]:
+				if queued_enemy_animation[ACTION.ATTACK]:
+					stop_animation()
+					reset_current_animations()
+					current_enemy_animation[ACTION.ATTACK] = true
+					queued_enemy_animation[ACTION.ATTACK] = false
+					attack_animation()
+					
+				elif not current_enemy_animation[ACTION.WALK]:
+					if queued_enemy_animation[ACTION.WALK]:
+						stop_animation()
+						reset_current_animations()
+						current_enemy_animation[ACTION.WALK] = true
+						queued_enemy_animation[ACTION.WALK] = false
+						walk_animation()
+						
+					elif not current_enemy_animation[ACTION.IDLE]:
+						if queued_enemy_animation[ACTION.IDLE]:
+							stop_animation()
+							reset_current_animations()
+							current_enemy_animation[ACTION.IDLE] = true
+							queued_enemy_animation[ACTION.IDLE] = false
+							idle_animation()
+							
+	reset_queued_animations()
+
+#Should only run once
+func attack_animation() -> void:
+	animated_sprite.play("attack")
+	await animated_sprite.animation_finished
+	current_enemy_animation[ACTION.ATTACK] = false
+
+#Should only run once	
+func death_animation() -> void:
+	animated_sprite.play("death") #No animation should play after this
+
+#Should not infinitely loop
+func hurt_animation() -> void:
+	animated_sprite.play("hurt")
+	await animated_sprite.animation_finished
+	current_enemy_animation[ACTION.HURT] = false
+
+#Should loop
+func idle_animation() -> void:
+	animated_sprite.play("idle")
+
+#Should loop
+func walk_animation() -> void:
+	animated_sprite.play("walk")
