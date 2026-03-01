@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://clmpsyfrj6qkc"]
+
+[ext_resource type="Script" uid="uid://0wn428mygvn4" path="res://Scenes/restart.gd" id="1_7g6v7"]
+
+[node name="Restart" type="Node2D" unique_id=1567652455]
+script = ExtResource("1_7g6v7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1807864616]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1722674870]
+anchors_preset = -1
+anchor_right = 0.008680556
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=987872134]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 1069.0
+offset_bottom = 653.0
+scale = Vector2(0.9963219, 1.0029625)
+theme_override_font_sizes/font_size = 50
+text = "
+
+
+
+                            Thanks for playing!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1518752405]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 400.0
+offset_right = 835.0
+offset_bottom = 477.0
+theme_override_font_sizes/font_size = 50
+text = "Click to Play Again"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=355803890]
+position = Vector2(573, 327)
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]

@@ -6,6 +6,7 @@ var level_1_scene:PackedScene = preload("res://Scenes/level_1.tscn")
 var level_2_scene:PackedScene = preload("res://Scenes/level_2.tscn")
 var level_3_scene:PackedScene = preload("res://Scenes/level_3.tscn")
 var level_4_scene:PackedScene = preload("res://Scenes/level_4.tscn")
+var restart_level_scene:PackedScene = preload("res://Scenes/restart.tscn")
 
 #Clear cons to switch scenes
 var level_1_killed_goal = 10
@@ -15,6 +16,7 @@ var level_2_enemies_killed = 0
 var level_3_killed_goal = 10
 var level_3_enemies_killed = 0
 var level_4_pass = false
+var level_restart_pass = false
 
 var level_1_loaded = false
 var level_2_loaded = false
@@ -45,6 +47,7 @@ func reset_clear_cons() -> void:
 	level_2_enemies_killed = 0
 	level_3_enemies_killed = 0
 	level_4_pass = false
+	level_restart_pass = false
 	
 func update_goals(enemy_depth:int = 0) -> void:
 	if enemy_depth == 0:
@@ -74,6 +77,9 @@ func check_goals() -> void:
 	elif current_level == LEVEL.LEVEL_4:
 		if level_4_pass:
 			transition_scene(LEVEL.RESTART)
+	elif current_level == LEVEL.RESTART:
+		if level_restart_pass:
+			transition_scene(LEVEL.LEVEL_1)
 
 func transition_scene(new_level:int) -> void:
 	if new_level == LEVEL.MENU:
@@ -94,4 +100,5 @@ func transition_scene(new_level:int) -> void:
 	elif new_level == LEVEL.RESTART:
 		current_level = LEVEL.RESTART
 		reset_clear_cons()
+		get_tree().change_scene_to_packed(restart_level_scene)
 		
