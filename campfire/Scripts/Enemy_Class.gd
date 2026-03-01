@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 #Apply knockback to the enemy; knockback_direction is a heading
 func take_knockback(knockback_direction:float,knockback_distance:float) -> void:
 	var knockback:Vector2 = Vector2.UP * knockback_distance
-	knockback.rotated(knockback_direction)
+	knockback = knockback.rotated(knockback_direction)
 	self.translate(knockback)
 	
 #DOT procs ever 0.5s
