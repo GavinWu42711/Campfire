@@ -8,7 +8,6 @@ visible = false
 script = ExtResource("1_w3yxc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1465631134]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1147908772]
 offset_right = 1154.0
@@ -28,12 +27,12 @@ text = "Tentacles:
 
 [node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=847348947]
 layout_mode = 0
-offset_left = 444.0
+offset_left = 409.0
 offset_top = 243.0
-offset_right = 710.0
+offset_right = 759.0
 offset_bottom = 458.0
 theme_override_font_sizes/font_size = 50
-text = "Glutton:
+text = "Glutton's Bite:
 -Atk Speed
 +Attack"
 

@@ -5,7 +5,7 @@ class_name Enemy
 #Variables to be set 
 #Movement 
 @export var move_speed:float = 300.0
-@export var rotation_speed:float = 1 #Degrees/s
+@export var rotation_speed:float = 45 #Degrees
 
 #Health and attacking
 @export var enemy_attack_damage:int = 10
@@ -52,7 +52,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	animation_handler()
 	
-	print("Enemy health: " + str(current_health))
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
@@ -170,7 +169,13 @@ func chase_player(delta:float) -> void:
 			
 			#Apply vector
 			self.translate(forward_vector)
-					
+			
+		if rotation_speed == 0:
+			if dOmega > 180:
+				animated_sprite.flip_h = true
+			else:
+				animated_sprite.flip_h = false
+				
 		queue_animation(ACTION.WALK)
 		
 	else:
