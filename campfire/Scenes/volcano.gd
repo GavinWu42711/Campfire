@@ -7,6 +7,8 @@ extends CharacterBody2D
 func _ready():
 	start_random_timer()
 	$AnimatedSprite2D.play("Dormant")
+	var random_scale = randf_range(0.7, 1.5)#size range
+	scale = Vector2(random_scale, random_scale)
 
 func start_random_timer():
 	var random_time = randf_range(1.0, 6.0) #random wait time
