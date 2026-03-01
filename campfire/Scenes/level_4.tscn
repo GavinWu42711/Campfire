@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="5_wk15n"]
 [ext_resource type="PackedScene" uid="uid://csucldh8tf7yt" path="res://Scenes/SeaMine.tscn" id="6_5a8oa"]
 [ext_resource type="AudioStream" uid="uid://cwoqs4tr1ev8h" path="res://Assets/Audio/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3" id="8_3ntyy"]
-[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="9_3ntyy"]
+[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="9_3ntyy"]
 [ext_resource type="PackedScene" uid="uid://kxwpgqqdwyjb" path="res://Scenes/anchor.tscn" id="10_7huqf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvrgg"]
@@ -1092,7 +1092,6 @@ rendering_quadrant_size = 32
 physics_quadrant_size = 32
 
 [node name="Player" parent="." unique_id=642714803 instance=ExtResource("5_wk15n")]
-scale = Vector2(1, 1)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1757274697]
 position = Vector2(-5372, -95)
