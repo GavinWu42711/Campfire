@@ -44,7 +44,8 @@ value = 100.0
 
 [node name="Spikes" parent="." unique_id=954835427 instance=ExtResource("4_5ixxa")]
 visible = false
-scale = Vector2(1.506, 1.5)
+z_index = -1
+collision_layer = 0
 monitoring = false
 monitorable = false
 

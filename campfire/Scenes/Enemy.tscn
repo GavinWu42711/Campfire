@@ -17,6 +17,7 @@ move_speed = 100.0
 rotation_speed = 45.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
+i_frame_length = 100.0
 follow_distance = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1062647774]

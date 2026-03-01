@@ -8,17 +8,34 @@
 [node name="CharacterBody2D" parent="." unique_id=642714803 instance=ExtResource("1_glv2v")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=656898556]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D/CanvasLayer" unique_id=1844552422]
-offset_left = -379.0
-offset_top = -262.0
-offset_right = 690.0
-offset_bottom = 336.0
+offset_left = -1337.0
+offset_top = -775.0
+offset_right = 1244.0
+offset_bottom = 720.0
 color = Color(0, 0, 0, 0.52156866)
+
+[node name="Button" type="Button" parent="CharacterBody2D/CanvasLayer/ColorRect" unique_id=1144625424]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="CharacterBody2D/CanvasLayer/ColorRect" unique_id=1509777989]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button3" type="Button" parent="CharacterBody2D/CanvasLayer/ColorRect" unique_id=1450955905]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.11400001
+anchor_bottom = 0.141
+offset_right = -286.234
+offset_bottom = -202.795
+theme_override_font_sizes/font_size = 73
+text = "Tentacles"
 
 [node name="CharacterBody2D2" parent="." unique_id=26514473 instance=ExtResource("2_uu6xs")]
 position = Vector2(338, 9)
-enemy_attack_damage = 10
-max_health = 100
 i_frame_length = 1.0
