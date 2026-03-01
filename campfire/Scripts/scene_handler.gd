@@ -32,7 +32,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	check_goals()
+	print(level_1_enemies_killed)
 
 func reset_clear_cons() -> void:
 	level_1_enemies_killed = 0
@@ -54,7 +55,8 @@ func update_goals(enemy_depth:int = 0) -> void:
 	
 func check_goals() -> void:
 	if current_level == LEVEL.MENU:
-		transition_scene(LEVEL.LEVEL_1)
+		#transition_scene(LEVEL.LEVEL_1)
+		pass
 	elif current_level == LEVEL.LEVEL_1:
 		if level_1_enemies_killed >= level_1_killed_goal:
 			transition_scene(LEVEL.LEVEL_2)
@@ -70,14 +72,20 @@ func check_goals() -> void:
 
 func transition_scene(new_level:int) -> void:
 	if new_level == LEVEL.MENU:
+		current_level = LEVEL.MENU
 		reset_clear_cons()
 	elif new_level == LEVEL.LEVEL_1:
 		get_tree().change_scene_to_packed(level_1_scene)
+		current_level = LEVEL.LEVEL_1
 	elif new_level == LEVEL.LEVEL_2:
 		get_tree().change_scene_to_packed(level_2_scene)
+		current_level = LEVEL.LEVEL_1
 	elif new_level == LEVEL.LEVEL_3:
 		get_tree().change_scene_to_packed(level_3_scene)
+		current_level = LEVEL.LEVEL_1
 	elif new_level == LEVEL.LEVEL_4:
 		get_tree().change_scene_to_packed(level_4_scene)
+		current_level = LEVEL.LEVEL_1
 	elif new_level == LEVEL.RESTART:
+		current_level = LEVEL.RESTART
 		reset_clear_cons()

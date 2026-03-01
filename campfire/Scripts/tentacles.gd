@@ -1,9 +1,7 @@
 extends Area2D
 
-signal apply_knockback(direction:float, units:float)
-signal take_dot(damage:int, duration:float)
-
 @onready var player: Player = $".."
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 var attackspeed = 1
 var can_attack = true
@@ -26,5 +24,6 @@ func _physics_process(delta: float) -> void:
 			body.take_damage_signal.emit(damage * tentacles)
 			body.apply_knockback.emit(player.rotation, knockback_dist)
 			body.take_dot.emit(dot, dot_duration)
+			animation_player.play("attack")
 			can_attack = false
 			attack_cd()

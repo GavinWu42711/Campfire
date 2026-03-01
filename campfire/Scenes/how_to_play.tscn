@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d23q51da5gjaa"]
+
+[ext_resource type="Script" uid="uid://cijqdwm5rfv11" path="res://Scripts/how_to_play.gd" id="1_hl01w"]
+
+[node name="HowToPlay" type="Node2D" unique_id=1567652455]
+script = ExtResource("1_hl01w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1807864616]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1722674870]
+anchors_preset = -1
+anchor_right = 0.008680556
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=987872134]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 1069.0
+offset_bottom = 653.0
+scale = Vector2(0.9963219, 1.0029625)
+theme_override_font_sizes/font_size = 50
+text = "How to play:
+- You are weak fish
+- Survival of the fittest, eat others to evolve
+- Hold down right mouse/right click to move
+- Pick method of attacking
+- Move close to attack
+- Pick upgrades after each level
+- Reach the deep sea boss
+- Become the strongest creature of the sea"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=693228662]
+layout_mode = 0
+offset_left = 813.0
+offset_top = 390.0
+offset_right = 1128.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 50
+text = "Click to Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=355803890]
+position = Vector2(573, 327)
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]

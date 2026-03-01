@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cujkrcfb7tchr"]
 
+[ext_resource type="Script" uid="uid://b7tlo01qdk80a" path="res://Scripts/level_3.gd" id="1_l4wr6"]
 [ext_resource type="Texture2D" uid="uid://bwpe0nu51c1sg" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 2/orig_big.png" id="1_ng0s0"]
 [ext_resource type="Texture2D" uid="uid://mihmftv63u4e" path="res://Assets/Tilesets and Backgrounds/TileMap (1).png" id="2_76ybr"]
 [ext_resource type="Texture2D" uid="uid://by68ikyxj23ka" path="res://Assets/Tilesets and Backgrounds/TileSet.png" id="3_s8nj6"]
@@ -7,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cdcno6virmq45" path="res://Assets/Tilesets and Backgrounds/New Project (1) (2).png" id="4_vwg62"]
 [ext_resource type="PackedScene" uid="uid://csucldh8tf7yt" path="res://Scenes/SeaMine.tscn" id="6_qf6rc"]
 [ext_resource type="AudioStream" uid="uid://cwoqs4tr1ev8h" path="res://Assets/Audio/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3" id="7_5e78q"]
-[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="8_5e78q"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="8_5e78q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwg62"]
 texture = ExtResource("2_76ybr")
@@ -648,6 +649,7 @@ sources/1 = SubResource("TileSetAtlasSource_qf6rc")
 sources/3 = SubResource("TileSetAtlasSource_53xsp")
 
 [node name="Level3" type="Node2D" unique_id=423755762]
+script = ExtResource("1_l4wr6")
 
 [node name="OrigBig" type="Sprite2D" parent="." unique_id=2063815661]
 position = Vector2(150, 33.999992)
@@ -670,7 +672,7 @@ tile_set = SubResource("TileSet_53xsp")
 rendering_quadrant_size = 32
 physics_quadrant_size = 32
 
-[node name="CharacterBody2D" parent="." unique_id=642714803 instance=ExtResource("4_s8nj6")]
+[node name="Player" parent="." unique_id=642714803 instance=ExtResource("4_s8nj6")]
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1757274697]
 position = Vector2(-5372, -95)

@@ -9,6 +9,7 @@ class_name Player
 @onready var upgrade_screen_spikes: Node2D = $UpgradeScreenSpikes
 @onready var upgrade_tentacles: Node2D = $upgrade_tentacles
 @onready var upgrade_glutton: Node2D = $upgrade_glutton
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal take_damage_signal(damage:int)
 signal up_gluttons_bite()
@@ -59,10 +60,10 @@ func _on_selection_screen_choose_tentacles_signal() -> void:
 	tentacles.scale *= Global.tent_range
 
 func take_damage(damage:int):
-	print("supposed to take damage")
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp
+		animation_player.play("hurt")
 		vulnerable = false
 		vulnerability_cd()
 	if Global.hp <= 0:
@@ -78,8 +79,8 @@ func vulnerability_cd():
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move"):
+		$AnimationPlayer.play("swim")
 		click_pos = get_global_mouse_position()
-		#is_attacking = false
 		is_dashing = false
 		distance_travelled = 0
 
@@ -90,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+		$AnimationPlayer.play("idle")
 
 	Global.player_pos = self.global_position
 	
@@ -132,3 +134,27 @@ func evolve():
 		Global.spikes += 1
 		Global.spike_damage += 4
 		Global.spike_waves += 1
+
+func reset():
+	Global.spike_attackspeed = 1.5
+	Global.spike_damage = 7
+	Global.spikes = 1
+	Global.spike_waves = 1
+	Global.spike_burst_cd = 5
+	Global.spikes_on_cd = false
+	Global.shooting_spikes = false
+	Global.spike_burst_unlocked = false
+	Global.burst_chance = 0
+
+	Global.tent_attackspeed = 1
+	Global.tent_damage = 5
+	Global.tentacles = 1
+	Global.knockback_dist = 0.0
+	Global.dot = 0
+	Global.dot_duration = 0.0
+	Global.tent_range = 1
+
+	Global.bite_attackspeed = 3
+	Global.bite_damage = 15
+	Global.lifesteal = 0.0
+	Global.bite_range = 1
