@@ -1,19 +1,22 @@
 [gd_scene format=3 uid="uid://bklhirikahx6u"]
 
 [ext_resource type="Script" uid="uid://7ivjk46panit" path="res://Scripts/spike_proj.gd" id="1_bh65h"]
-[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="2_48j1x"]
+[ext_resource type="Texture2D" uid="uid://x7rrdbmwk1kn" path="res://Assets/Sprites/Player Sea Urchin/Screenshot 2026-03-01 081431.png" id="2_exly4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e6krh"]
-radius = 85.02353
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3nmo"]
+size = Vector2(218, 92)
 
 [node name="Area2D" type="Area2D" unique_id=1572523126]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_bh65h")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=653860342]
-texture = ExtResource("2_48j1x")
+position = Vector2(-28.999992, -12.999996)
+scale = Vector2(3.0704222, 9)
+texture = ExtResource("2_exly4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2019427411]
-shape = SubResource("CircleShape2D_e6krh")
+position = Vector2(-31, -14)
+shape = SubResource("RectangleShape2D_w3nmo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

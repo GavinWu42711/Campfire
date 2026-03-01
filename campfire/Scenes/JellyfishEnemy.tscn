@@ -199,6 +199,7 @@ bg_color = Color(0, 0.69803923, 0.22745098, 1)
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=980513259 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite", "hp_bar")]
 script = ExtResource("1_lpvdh")
 rotation_speed = 0.0
+enemy_attack_damage = 7
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")

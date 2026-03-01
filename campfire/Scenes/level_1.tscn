@@ -657,6 +657,7 @@ texture = ExtResource("1_vk57k")
 
 [node name="Player" parent="." unique_id=642714803 instance=ExtResource("2_8ffim")]
 position = Vector2(-11, 380)
+scale = Vector2(1, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1411865367]
 scale = Vector2(7, 7.062)

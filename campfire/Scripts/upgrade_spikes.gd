@@ -3,7 +3,7 @@ extends Node2D
 @onready var screen: CanvasLayer = $CanvasLayer
 
 func _on_button_pressed() -> void:
-	Global.spikes += 1
+	Global.spikes += 2
 	screen.visible = false
 	get_tree().paused = false
 

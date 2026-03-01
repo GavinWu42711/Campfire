@@ -10,7 +10,12 @@ func _physics_process(delta: float) -> void:
 		if can_attack && body is Enemy:
 			body.take_damage_signal.emit(Global.bite_damage)
 			Global.hp += Global.bite_damage * Global.lifesteal
-			animated_sprite_2d.play("attack")
+			if Global.weapon == "glutton's bite":
+				animated_sprite_2d.play("attack")
+			elif Global.weapon == "tentacles":
+				pass
+			else:
+				animated_sprite_2d.play("spike_attack")
 			can_attack = false
 			attack_cd()
 

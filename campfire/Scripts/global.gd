@@ -2,12 +2,13 @@ extends Node
 
 var player_pos:Vector2
 
+var max_hp = 100
 var hp = 100
 var weapon:String
 
 var spike_attackspeed = 1.5
-var spike_damage = 21
-var spikes = 1
+var spike_damage = 7
+var spikes = 3
 var spike_waves = 1
 var spike_burst_cd = 5
 var spikes_on_cd = false

@@ -8,9 +8,9 @@ script = ExtResource("1_np2pn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998554934]
 process_mode = 3
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1690086712]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

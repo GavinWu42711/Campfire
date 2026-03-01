@@ -16,7 +16,7 @@ signal up_gluttons_bite()
 signal up_tentacles()
 signal up_spikes
 
-var ms = 200
+var ms = 500
 var click_pos = Vector2()
 var target_pos = Vector2()
 #var is_attacking = false
@@ -63,7 +63,12 @@ func take_damage(damage:int):
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp
-		$AnimatedSprite2D.play("hurt")
+		if Global.weapon == "glutton's bite":
+			$AnimatedSprite2D.play("hurt")
+		elif Global.weapon == "tentacles":
+			pass
+		else:
+			$AnimatedSprite2D.play("spike_hurt")
 		vulnerable = false
 		vulnerability_cd()
 	if Global.hp <= 0:
@@ -71,7 +76,12 @@ func take_damage(damage:int):
 		die()
 
 func die():
-	$AnimatedSprite2D.play("death")
+	if Global.weapon == "glutton's bite":
+		$AnimatedSprite2D.play("death")
+	elif Global.weapon == "tentacles":
+		pass
+	else:
+		$AnimatedSprite2D.play("spike_death")
 	await get_tree().create_timer(1).timeout
 	queue_free()
 	reset()
@@ -83,7 +93,12 @@ func vulnerability_cd():
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move"):
-		$AnimatedSprite2D.play("swim")
+		if Global.weapon == "glutton's bite":
+			$AnimatedSprite2D.play("swim")
+		elif Global.weapon == "tentacles":
+			pass
+		else:
+			$AnimatedSprite2D.play("spike_move")
 		click_pos = get_global_mouse_position()
 		is_dashing = false
 		distance_travelled = 0
@@ -95,7 +110,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		$AnimatedSprite2D.play("idle")
+		if Global.weapon == "glutton's bite":
+			$AnimatedSprite2D.play("idle")
+		elif Global.weapon == "tentacles":
+			pass
+		else:
+			$AnimatedSprite2D.play("spike_idle")
 
 	Global.player_pos = self.global_position
 	
@@ -122,6 +142,8 @@ func dash():
 
 func evolve():
 	character_body_2d.scale *= 1.5
+	Global.max_hp += 20
+	Global.hp += 20
 	if Global.weapon == "glutton's bite":
 		up_gluttons_bite.emit()
 		Global.bite_damage += 10
@@ -140,6 +162,8 @@ func evolve():
 		Global.spike_waves += 1
 
 func reset():
+	Global.max_hp = 100
+	Global.hp = 100
 	Global.spike_attackspeed = 1.5
 	Global.spike_damage = 21
 	Global.spikes = 1
