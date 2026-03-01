@@ -36,7 +36,7 @@ var current_enemy_animation = [false,false,false,false,false]
 var dot_applied:bool = false
 var dot_applied_damage:int = 0
 var dot_applied_time_left:float = 0
-var dot_applied_last_proc:float = 0
+var can_take_dot:bool = true
 var dot_timer:Timer
 
 #Other
@@ -100,28 +100,30 @@ func apply_dot(damage:int,time:float) -> void:
 		else:
 			dot_timer.stop()
 			dot_timer.wait_time = time
-		dot_applied_last_proc = time
 		dot_timer.start()
+		dot_timeout()
 
 #Checks and handles DOT every second
 func dot_handler() -> void:
 	if alive:
 		if dot_applied:
-			#Updates how much longer there is for DOT
-			dot_applied_time_left = dot_timer.time_left
-			
-			#Checks if it's been 5 or more seconds since DOT was last proc'd
-			if dot_applied_last_proc - dot_applied_time_left >= 0.5:
-				dot_applied_last_proc = dot_applied_time_left
+			if can_take_dot:
+				can_take_dot = false
 				current_health -= dot_applied_damage
+				dot_dmg_timeout()
 				
 				#If the enemy dies
 				if current_health <= 0:
 					current_health = 0
 					die()
-			
-			if dot_applied_time_left == 0:
-				dot_applied = false
+	
+func dot_dmg_timeout() -> void:
+	await get_tree().create_timer(0.5).timeout
+	can_take_dot = true
+	
+func dot_timeout() -> void:
+	await dot_timer.timeout
+	dot_applied = false
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
