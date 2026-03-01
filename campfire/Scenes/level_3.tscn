@@ -1719,7 +1719,7 @@ physics_quadrant_size = 32
 [node name="TileMapLayer4" type="TileMapLayer" parent="." unique_id=719322211]
 position = Vector2(0, 10)
 scale = Vector2(5, 5.044)
-tile_map_data = PackedByteArray("AADX/w4AAgAAAAgAAADX/w8AAgAAAAkAAADX/xAAAgAAAAoAAADX/xEAAgAAAAsAAADY/w4AAgABAAgAAADY/w8AAgABAAkAAADY/xAAAgABAAoAAADY/xEAAgABAAsAAADZ/w4AAgACAAgAAADZ/w8AAgACAAkAAADZ/xAAAgACAAoAAADZ/xEAAgACAAsAAADa/w4AAgADAAgAAADa/w8AAgADAAkAAADa/xAAAgADAAoAAADa/xEAAgADAAsAAAAJABIAAgAEAAUAAAAJABMAAgAEAAYAAAAKABIAAgAFAAUAAAAKABMAAgAFAAYAAAA=")
+tile_map_data = PackedByteArray("AAAJABIAAgAEAAUAAAAJABMAAgAEAAYAAAAKABIAAgAFAAUAAAAKABMAAgAFAAYAAAA=")
 tile_set = SubResource("TileSet_xjeco")
 rendering_quadrant_size = 32
 physics_quadrant_size = 32
