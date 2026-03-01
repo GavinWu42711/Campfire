@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dh4lg1jmx765n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3o24"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=2089242673]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1547045850]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1358187348]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=155924537]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1641036887]
+sprite_frames = SubResource("SpriteFrames_y3o24")
+animation = &"attack"
