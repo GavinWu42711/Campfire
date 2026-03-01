@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d02uqn1165ie3"]
+
+[ext_resource type="Script" uid="uid://dysuk8skwiuh8" path="res://Scenes/falling_anchor.gd" id="1_f6vkp"]
+[ext_resource type="Texture2D" uid="uid://b4s8n5p6xepu4" path="res://Assets/Tilesets and Backgrounds/Anchor.png" id="2_23fl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65ywo"]
+size = Vector2(20, 571.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_et0cm"]
+height = 180.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rlr4j"]
+radius = 29.0
+height = 96.0
+
+[node name="Anchor" type="CharacterBody2D" unique_id=117804737]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_f6vkp")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=1028678759]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=474066773]
+position = Vector2(0, 373.25)
+shape = SubResource("RectangleShape2D_65ywo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=502189868]
+texture = ExtResource("2_23fl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=335697644]
+shape = SubResource("CapsuleShape2D_et0cm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=988116087]
+position = Vector2(-2, 56)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rlr4j")
+
+[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
