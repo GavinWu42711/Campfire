@@ -207,10 +207,12 @@ enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631969731]
-position = Vector2(-17, 3.5)
+position = Vector2(4, -1)
+rotation = -1.5761476
 shape = SubResource("RectangleShape2D_xc54r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=135229536]
+rotation = -1.5761476
 collision_mask = 5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=799157297]
@@ -220,6 +222,7 @@ shape = SubResource("RectangleShape2D_h70wm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1080190488]
 position = Vector2(-0.5, -0.9999924)
+rotation = -1.5761476
 scale = Vector2(2.8125, 2.6250005)
 sprite_frames = SubResource("SpriteFrames_3vr3u")
 animation = &"attack"

@@ -169,16 +169,19 @@ attack_cooldown = 10.0
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1385253411]
-position = Vector2(-1.0000001, -1.0000005)
+position = Vector2(-1.0000001, 0.99999976)
+rotation = -1.5705347
 scale = Vector2(1.1062558, 1.0720397)
 shape = SubResource("RectangleShape2D_p2go3")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=772935627]
+rotation = -1.5705347
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1760360043]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_n6yp7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=456872427]
+rotation = -1.5705347
 sprite_frames = SubResource("SpriteFrames_6hsfr")
 animation = &"walk"

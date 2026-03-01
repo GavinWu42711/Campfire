@@ -204,6 +204,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=46626076 node_paths=PackedStringArray("enemy_hitbox", "enemy_attack_hitbox", "animated_sprite")]
 script = ExtResource("1_fvxlg")
+rotation_speed = 0.0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
 animated_sprite = NodePath("AnimatedSprite2D")
