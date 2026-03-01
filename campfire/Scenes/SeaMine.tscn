@@ -12,6 +12,10 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("3_uo310")
 region = Rect2(0, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3ok"]
+atlas = ExtResource("3_uo310")
+region = Rect2(256, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3ajq"]
 atlas = ExtResource("3_uo310")
 region = Rect2(0, 128, 128, 128)
@@ -44,10 +48,6 @@ region = Rect2(0, 512, 128, 128)
 atlas = ExtResource("3_uo310")
 region = Rect2(384, 512, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1r3ok"]
-atlas = ExtResource("3_uo310")
-region = Rect2(256, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_piehh"]
 animations = [{
 "frames": [{
@@ -61,6 +61,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3jqqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3ok")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f3ajq")
@@ -85,9 +88,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i21g0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1r3ok")
 }],
 "loop": false,
 "name": &"Explode",
@@ -102,9 +102,11 @@ script = ExtResource("1_q5f55")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367923548]
 sprite_frames = SubResource("SpriteFrames_piehh")
-animation = &"Dormant"
+animation = &"Explode"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1028678759]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=474066773]
 shape = SubResource("CircleShape2D_s2be3")
