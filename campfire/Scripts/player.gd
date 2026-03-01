@@ -9,7 +9,7 @@ class_name Player
 @onready var upgrade_screen_spikes: Node2D = $UpgradeScreenSpikes
 @onready var upgrade_tentacles: Node2D = $upgrade_tentacles
 @onready var upgrade_glutton: Node2D = $upgrade_glutton
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var character_body_2d: Player = $"."
 
 signal take_damage_signal(damage:int)
 signal up_gluttons_bite()
@@ -63,6 +63,7 @@ func take_damage(damage:int):
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp
+		$AnimatedSprite2D.play("hurt")
 		vulnerable = false
 		vulnerability_cd()
 	if Global.hp <= 0:
@@ -70,7 +71,11 @@ func take_damage(damage:int):
 		die()
 
 func die():
+	$AnimatedSprite2D.play("death")
+	await get_tree().create_timer(1).timeout
 	queue_free()
+	reset()
+	SceneHandler.transition_scene(SceneHandler.LEVEL.RESTART)
 
 func vulnerability_cd():
 	await get_tree().create_timer(1).timeout
@@ -78,6 +83,7 @@ func vulnerability_cd():
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move"):
+		$AnimatedSprite2D.play("swim")
 		click_pos = get_global_mouse_position()
 		is_dashing = false
 		distance_travelled = 0
@@ -89,7 +95,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-
+		$AnimatedSprite2D.play("idle")
 
 	Global.player_pos = self.global_position
 	
@@ -115,26 +121,27 @@ func dash():
 		look_at(get_global_mouse_position())
 
 func evolve():
+	character_body_2d.scale *= 1.5
 	if Global.weapon == "glutton's bite":
 		up_gluttons_bite.emit()
 		Global.bite_damage += 10
 		Global.bite_attackspeed -= 0.2
+		character_body_2d.scale *= Global.bite_range
 	elif Global.weapon == "tentacles":
 		up_tentacles.emit()
-		get_tree().paused = true
 		Global.tent_damage += 5
 		Global.tentacles += 1
+		character_body_2d.scale *= Global.tent_range
 	else:
 		Global.spike_burst_unlocked = true
 		up_spikes.emit()
-		get_tree().paused = true
 		Global.spikes += 1
 		Global.spike_damage += 4
 		Global.spike_waves += 1
 
 func reset():
 	Global.spike_attackspeed = 1.5
-	Global.spike_damage = 7
+	Global.spike_damage = 21
 	Global.spikes = 1
 	Global.spike_waves = 1
 	Global.spike_burst_cd = 5
@@ -144,7 +151,7 @@ func reset():
 	Global.burst_chance = 0
 
 	Global.tent_attackspeed = 1
-	Global.tent_damage = 5
+	Global.tent_damage = 17
 	Global.tentacles = 1
 	Global.knockback_dist = 0.0
 	Global.dot = 0
@@ -152,6 +159,6 @@ func reset():
 	Global.tent_range = 1
 
 	Global.bite_attackspeed = 3
-	Global.bite_damage = 15
+	Global.bite_damage = 35
 	Global.lifesteal = 0.0
 	Global.bite_range = 1

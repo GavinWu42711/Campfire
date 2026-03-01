@@ -7,7 +7,7 @@ func _on_character_body_2d_up_gluttons_bite() -> void:
 	screen.visible = true
 
 func _on_button_button_down() -> void:
-	Global.bite_range += 0.2
+	Global.bite_range += 1
 	screen.visible = false
 	get_tree().paused = false
 

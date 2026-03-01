@@ -187,18 +187,6 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
-[sub_resource type="Animation" id="Animation_kih0c"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_lyrkg"]
-resource_name = "swim"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c43xd"]
-_data = {
-&"RESET": SubResource("Animation_kih0c"),
-&"swim": SubResource("Animation_lyrkg")
-}
-
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=642714803]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
@@ -209,7 +197,7 @@ script = ExtResource("1_gntrk")
 position = Vector2(-3, -12)
 scale = Vector2(3.074324, 3.0660915)
 sprite_frames = SubResource("SpriteFrames_utwlt")
-animation = &"swim"
+animation = &"death"
 
 [node name="Tentacles" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
 process_mode = 4
@@ -225,8 +213,8 @@ collision_layer = 0
 [node name="Glutton" parent="." unique_id=505521471 instance=ExtResource("5_nn08x")]
 process_mode = 4
 visible = false
-position = Vector2(93, 0)
-scale = Vector2(0.88547325, 1.914584)
+position = Vector2(93, -7.999998)
+scale = Vector2(1.1181031, 3.2755108)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
@@ -253,7 +241,6 @@ unique_name_in_owner = true
 gizmo_extents = 0.0
 
 [node name="UpgradeScreenSpikes" parent="." unique_id=179100804 instance=ExtResource("6_nn08x")]
-process_mode = 2
 visible = false
 
 [node name="upgrade_tentacles" parent="." unique_id=1336321391 instance=ExtResource("7_52ee3")]
@@ -261,9 +248,6 @@ visible = false
 
 [node name="upgrade_glutton" parent="." unique_id=961335149 instance=ExtResource("8_bhhdu")]
 visible = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=740229170]
-libraries/ = SubResource("AnimationLibrary_c43xd")
 
 [connection signal="take_damage_signal" from="." to="Spikes" method="_on_character_body_2d_take_damage_signal"]
 [connection signal="up_gluttons_bite" from="." to="upgrade_glutton" method="_on_character_body_2d_up_gluttons_bite"]
