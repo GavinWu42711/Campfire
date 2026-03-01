@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6hs2xmivlalh"]
 
 [ext_resource type="Script" uid="uid://c6bdoed4525yb" path="res://Scripts/tentacles.gd" id="1_kvjeg"]
-[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="1_qqjiy"]
+[ext_resource type="Texture2D" uid="uid://c75ajskb2s3x3" path="res://Assets/Sprites/Shark Enemy/download.png" id="2_iyflu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxa1p"]
 radius = 106.30146
@@ -11,7 +11,9 @@ collision_layer = 0
 script = ExtResource("1_kvjeg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130536545]
-texture = ExtResource("1_qqjiy")
+rotation = 3.1372333
+scale = Vector2(0.74876845, 0.23795356)
+texture = ExtResource("2_iyflu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255091381]
 shape = SubResource("CircleShape2D_fxa1p")

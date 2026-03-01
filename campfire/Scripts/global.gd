@@ -7,7 +7,7 @@ var hp = 100
 var weapon:String
 
 var spike_attackspeed = 1.5
-var spike_damage = 7
+var spike_damage = 5
 var spikes = 3
 var spike_waves = 1
 var spike_burst_cd = 5
@@ -24,9 +24,9 @@ var dot = 0
 var dot_duration = 0.0
 var tent_range = 1
 
-var bite_attackspeed = 0.1
-var bite_damage = 35
-var lifesteal = 0.0
+var bite_attackspeed = 2
+var bite_damage = 50
+var lifesteal = 0.10
 var bite_range = 1
 
 # Called when the node enters the scene tree for the first time.
