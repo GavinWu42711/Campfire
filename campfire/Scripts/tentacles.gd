@@ -9,9 +9,10 @@ var attackspeed = 1
 var can_attack = true
 var damage = 5
 var tentacles = 1
-var knockback_dist = 0.0
+var knockback_dist = 150.0
 var dot = 0
 var dot_duration = 0.0
+
 
 @onready var tentacles_wpn: Area2D = $"."
 
@@ -27,17 +28,3 @@ func _physics_process(delta: float) -> void:
 			body.take_dot.emit(dot, dot_duration)
 			can_attack = false
 			attack_cd()
-
-func _on_upgrade_tentacles_plus_dot(num: int, time: float) -> void:
-	dot += num
-	dot_duration += time
-	
-func _on_upgrade_tentacles_plus_knockback(num: int) -> void:
-	knockback_dist += num
-
-func _on_upgrade_tentacles_plus_range(num: float) -> void:
-	tentacles_wpn.scale *= num
-
-func _on_character_body_2d_up_tentacles() -> void:
-	damage += 7
-	tentacles += 1
