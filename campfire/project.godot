@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.svg"
 
 Global="*uid://chjmsq0ys3527"
 EnemySpawner="*uid://chbskor58s0mx"
+SceneHandler="*uid://dca0jch7vav0r"
 
 [display]
 

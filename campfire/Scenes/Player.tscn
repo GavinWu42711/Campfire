@@ -96,6 +96,3 @@ visible = false
 [connection signal="plus_dot" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_dot"]
 [connection signal="plus_knockback" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_knockback"]
 [connection signal="plus_range" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_range"]
-[connection signal="plus_dmg" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_dmg"]
-[connection signal="plus_lifesteal" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_lifesteal"]
-[connection signal="plus_range" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_range"]

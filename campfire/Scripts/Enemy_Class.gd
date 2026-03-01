@@ -18,6 +18,7 @@ class_name Enemy
 
 #Sprites and animations
 @export var animated_sprite:AnimatedSprite2D
+@export var hp_bar:ProgressBar
 
 #Variables NOT to be set
 #Health and attacking
@@ -38,6 +39,9 @@ var dot_applied_time_left:float = 0
 var dot_applied_last_proc:float = 0
 var dot_timer:Timer
 
+#Other
+var enemy_depth = 0
+
 #Signal for the enemy to take damage; helps with decoupling
 signal take_damage_signal(damage:int)
 
@@ -54,6 +58,7 @@ func _ready() -> void:
 	take_dot.connect(apply_dot)
 	apply_knockback.connect(take_knockback)
 	dot_timer = Timer.new()
+	set_up_hp_bar()
 
 #Run every second
 func _physics_process(delta: float) -> void:
@@ -61,7 +66,22 @@ func _physics_process(delta: float) -> void:
 	check_attack_hitbox()
 	animation_handler()
 	dot_handler()
+	update_hp_bar()
 	move_and_slide()
+	
+#Sets up the enemy hp-bar
+func set_up_hp_bar() -> void:
+	while hp_bar == null:
+		pass
+	hp_bar.FillMode.FILL_BEGIN_TO_END
+	hp_bar.min_value = 0
+	hp_bar.max_value = max_health
+	hp_bar.value = current_health
+	hp_bar.show_percentage = true
+	
+#Updates the enemy hp-bar
+func update_hp_bar() -> void:
+	hp_bar.value = current_health
 	
 #Apply knockback to the enemy; knockback_direction is a heading
 func take_knockback(knockback_direction:float,knockback_distance:float) -> void:
@@ -129,6 +149,7 @@ func take_damage_cooldown(cooldown_length) -> void:
 #When the enemy dies
 func die() -> void:
 	alive = false
+	SceneHandler.update_goals_signal.emit(enemy_depth)
 	queue_animation(ACTION.DEATH)
 	
 #Checks if any player hitboxes are in range
