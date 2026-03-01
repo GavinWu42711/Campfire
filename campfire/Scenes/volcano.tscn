@@ -91,6 +91,8 @@ sprite_frames = SubResource("SpriteFrames_exwvd")
 animation = &"Explode"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1028678759]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=474066773]
 shape = SubResource("CapsuleShape2D_6pyvn")
