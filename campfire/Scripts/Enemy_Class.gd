@@ -25,7 +25,9 @@ var can_take_damage:bool = true
 var alive:bool = true
 
 #Sprites and animations
-enum ACTION {ATTACK,DE}
+enum ACTION {ATTACK,DEATH,HURT,IDLE,WALK}
+var queued_enemy_animation = [false, false, false, false, false] #Each boolean corresponds to an action in the enum
+var current_enemy_animation = [false,false,false,false,false]
 
 #Signal for the enemy to take damage; helps with decoupling
 signal take_damage_signal(damage:int)
@@ -38,12 +40,55 @@ func _ready() -> void:
 #Run every second
 func _physics_process(delta: float) -> void:
 	chase_player(delta)
+	check_attack_hitbox()
 	move_and_slide()
 	
 	print("Enemy health: " + str(current_health))
 
+#Try to queue an animation
+func queue_animation(animation_action:int) -> void:
+	queued_enemy_animation[animation_action] = true
+
+#Reset booleans for current_enemy_animation
+func reset_current_animations() -> void:
+	for i in range(len(current_enemy_animation)):
+		current_enemy_animation[i] = true
+
+func current_animation_logic() -> void:
+	if not current_enemy_animation[ACTION.DEATH]:
+		if queued_enemy_animation[ACTION.DEATH]:
+			reset_current_animations()
+			current_enemy_animation[ACTION.DEATH] = true
+			queued_enemy_animation[ACTION.DEATH] = false
+		elif not current_enemy_animation[ACTION.HURT]:
+			if queued_enemy_animation[ACTION.HURT]:
+				reset_current_animations()
+				current_enemy_animation[ACTION.HURT] = true
+				queued_enemy_animation[ACTION.HURT] = false
+			elif not current_enemy_animation[ACTION.ATTACK]:
+				if queued_enemy_animation[ACTION.ATTACK]:
+					reset_current_animations()
+					current_enemy_animation[ACTION.ATTACK] = true
+					queued_enemy_animation[ACTION.ATTACK] = false
+				elif not current_enemy_animation[ACTION.WALK]:
+					if queued_enemy_animation[ACTION.WALK]:
+						reset_current_animations()
+						current_enemy_animation[ACTION.WALK] = true
+						queued_enemy_animation[ACTION.WALK] = false
+					elif not current_enemy_animation[ACTION.IDLE]:
+						if queued_enemy_animation[ACTION.IDLE]:
+							reset_current_animations()
+							current_enemy_animation[ACTION.IDLE] = true
+							queued_enemy_animation[ACTION.IDLE] = false
+
+#Changes the animation of the enemy depending on the action they're supposed to have
+func animation_handler() -> void:
+	current_animation_logic()
+	
+	
 #Makes the enemy take damage
 func take_damage(damage:int):
+	print("taking damage")
 	if can_take_damage and alive:
 		#Start i-frame
 		can_take_damage = false
@@ -143,6 +188,5 @@ func chase_player(delta:float) -> void:
 			
 			#Apply vector
 			self.translate(forward_vector)
-		
 		
 	

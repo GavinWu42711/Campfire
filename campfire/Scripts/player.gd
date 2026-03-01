@@ -27,6 +27,7 @@ func _ready() -> void:
 	click_pos = position
 	
 func take_damage(damage:int):
+	print("supposed to take damage")
 	if vulnerable && alive:
 		hp -= damage
 		hp_bar.value = hp

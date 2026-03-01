@@ -32,8 +32,6 @@ texture = ExtResource("2_gntrk")
 [node name="Tentacles" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
 position = Vector2(70, 0)
 scale = Vector2(0.3917232, 2.116013)
-monitoring = false
-monitorable = false
 
 [node name="HpBar" type="ProgressBar" parent="." unique_id=555031898]
 offset_left = -71.0

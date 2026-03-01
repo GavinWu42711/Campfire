@@ -1,7 +1,24 @@
 [gd_scene format=3 uid="uid://bv0et8ndjqwyt"]
 
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://quij7qwf8fa" path="res://Scenes/Enemy.tscn" id="2_uu6xs"]
 
 [node name="Node2D" type="Node2D" unique_id=769676833]
 
 [node name="CharacterBody2D" parent="." unique_id=642714803 instance=ExtResource("1_glv2v")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=656898556]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D/CanvasLayer" unique_id=1844552422]
+offset_left = -379.0
+offset_top = -262.0
+offset_right = 690.0
+offset_bottom = 336.0
+color = Color(0, 0, 0, 0.52156866)
+
+[node name="CharacterBody2D2" parent="." unique_id=26514473 instance=ExtResource("2_uu6xs")]
+position = Vector2(338, 9)
+enemy_attack_damage = 10
+max_health = 100
+i_frame_length = 1.0
