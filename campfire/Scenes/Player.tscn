@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://4k3ej70vw0ce" path="res://Scenes/upgrade_tentacles.tscn" id="7_52ee3"]
 [ext_resource type="PackedScene" uid="uid://d4fumy5g21bmn" path="res://Scenes/upgrade_glutton.tscn" id="8_bhhdu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
+radius = 85.02353
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
 bg_color = Color(1, 0, 0, 1)
 corner_radius_top_left = 100
@@ -23,31 +26,16 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
-radius = 85.02353
-
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=642714803]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_gntrk")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=126056785]
-texture = ExtResource("2_gntrk")
 
 [node name="Tentacles" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
 process_mode = 4
 visible = false
 position = Vector2(70, 0)
 scale = Vector2(0.3917232, 2.116013)
-
-[node name="HpBar" type="ProgressBar" parent="." unique_id=555031898]
-offset_left = -71.0
-offset_top = 59.0
-offset_right = 63.0
-offset_bottom = 86.0
-theme_override_styles/background = SubResource("StyleBoxFlat_gntrk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_dewec")
-value = 100.0
 
 [node name="Spikes" parent="." unique_id=954835427 instance=ExtResource("4_5ixxa")]
 process_mode = 4
@@ -63,6 +51,18 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=126056785]
+texture = ExtResource("2_gntrk")
+
+[node name="HpBar" type="ProgressBar" parent="." unique_id=555031898]
+offset_left = -71.0
+offset_top = 59.0
+offset_right = 63.0
+offset_bottom = 86.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gntrk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dewec")
+value = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=392294217]
 zoom = Vector2(0.5, 0.5)
