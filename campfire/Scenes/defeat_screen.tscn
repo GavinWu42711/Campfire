@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d132a6h0h0ypq"]
+
+[ext_resource type="Script" uid="uid://d2yv3v0i4t418" path="res://Scenes/defeat_screen.gd" id="1_0hunr"]
+
+[node name="DefeatScreen" type="Node2D" unique_id=2091064201]
+script = ExtResource("1_0hunr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2124918410]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=891063188]
+anchors_preset = -1
+anchor_right = 0.008680556
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect" unique_id=1841894025]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 232.0
+offset_right = 981.0
+offset_bottom = 373.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Game Over!
+You Lost! Better Luck Next Time!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1234177943]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.13402061
+anchor_top = 0.08888889
+anchor_right = -0.13402061
+anchor_bottom = 0.08888889
+offset_left = 813.0
+offset_top = 390.0
+offset_right = 1128.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 50
+text = "Play Again?"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=850791811]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.4974227
+anchor_top = 0.094814815
+anchor_right = -0.4974227
+anchor_bottom = 0.094814815
+offset_left = 813.0
+offset_top = 390.0
+offset_right = 1128.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]

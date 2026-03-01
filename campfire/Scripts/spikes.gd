@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var spikes_area: Area2D = $"."
+@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
 
 var can_attack = true
 var shooting_spikes = false
@@ -14,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if can_attack && body is Enemy:
 			body.take_damage_signal.emit(Global.spike_damage * Global.spikes)
+			animation_player.play("attack")
 			can_attack = false
 			attack_cd()
 	if !Global.spikes_on_cd && Global.spike_burst_unlocked:

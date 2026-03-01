@@ -9,6 +9,7 @@ class_name Player
 @onready var upgrade_screen_spikes: Node2D = $UpgradeScreenSpikes
 @onready var upgrade_tentacles: Node2D = $upgrade_tentacles
 @onready var upgrade_glutton: Node2D = $upgrade_glutton
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal take_damage_signal(damage:int)
 signal up_gluttons_bite()
@@ -62,6 +63,7 @@ func take_damage(damage:int):
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp
+		animation_player.play("hurt")
 		vulnerable = false
 		vulnerability_cd()
 	if Global.hp <= 0:
@@ -77,6 +79,7 @@ func vulnerability_cd():
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move"):
+		$AnimationPlayer.play("swim")
 		click_pos = get_global_mouse_position()
 		is_dashing = false
 		distance_travelled = 0
@@ -88,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+		$AnimationPlayer.play("idle")
 
 	Global.player_pos = self.global_position
 	
