@@ -24,6 +24,8 @@ corner_radius_bottom_left = 100
 radius = 85.02353
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=642714803]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_gntrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=126056785]
@@ -46,15 +48,14 @@ value = 100.0
 visible = false
 z_index = -1
 collision_layer = 0
-monitoring = false
-monitorable = false
+collision_mask = 0
 
 [node name="Glutton" parent="." unique_id=505521471 instance=ExtResource("5_nn08x")]
 visible = false
 position = Vector2(93, 0)
 scale = Vector2(0.88547325, 1.914584)
-monitoring = false
-monitorable = false
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")

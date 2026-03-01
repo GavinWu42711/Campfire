@@ -48,7 +48,6 @@ func _physics_process(delta: float) -> void:
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
-	#print("taking damage")
 	if can_take_damage and alive:
 		#Start i-frame
 		can_take_damage = false
@@ -180,7 +179,6 @@ func stop_animation() -> void:
 	
 #Changes the animation of the enemy depending on the action they're queued to have and currently are doing
 func animation_handler() -> void:
-	print(queued_enemy_animation)
 	if not current_enemy_animation[ACTION.DEATH]:
 		
 		if queued_enemy_animation[ACTION.DEATH]:
