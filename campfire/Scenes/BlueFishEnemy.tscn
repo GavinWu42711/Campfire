@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyhq67wl1ojvm"]
 
-[ext_resource type="Script" path="res://Scripts/blue_fish_enemy.gd" id="1_fvxlg"]
+[ext_resource type="Script" uid="uid://j4kh8v06reu" path="res://Scripts/blue_fish_enemy.gd" id="1_fvxlg"]
 [ext_resource type="Texture2D" uid="uid://cv6nf45xh4clk" path="res://Assets/Sprites/Fish Enemy/Enemy_Attack.png" id="1_tn7su"]
 [ext_resource type="Texture2D" uid="uid://ckt6ic0wm1r13" path="res://Assets/Sprites/Fish Enemy/Enemy_Death.png" id="2_fvxlg"]
 [ext_resource type="Texture2D" uid="uid://dtq6goy02y4de" path="res://Assets/Sprites/Fish Enemy/Enemy_Hurt.png" id="3_rvsjg"]

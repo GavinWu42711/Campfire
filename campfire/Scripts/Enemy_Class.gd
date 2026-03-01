@@ -109,10 +109,11 @@ func dot_handler() -> void:
 		#Updates how much longer there is for DOT
 		dot_applied_time_left = dot_timer.time_left
 		
-		#Checks if it's been 5 or more seconds since DOT was last proc'd
+		#Checks if it's been 0.5 or more seconds since DOT was last proc'd
 		if dot_applied_last_proc - dot_applied_time_left >= 0.5:
 			dot_applied_last_proc = dot_applied_time_left
 			current_health -= dot_applied_damage
+			print("Dot dmg")
 			
 			#If the enemy dies
 			if current_health <= 0:
