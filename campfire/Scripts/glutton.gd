@@ -2,8 +2,6 @@ extends Area2D
 
 @onready var glutton: Area2D = $"."
 
-signal lifesteal_hp(num:float)
-
 var can_attack = true
 
 func _physics_process(delta: float) -> void:

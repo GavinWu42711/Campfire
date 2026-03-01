@@ -79,7 +79,6 @@ func vulnerability_cd():
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move"):
 		click_pos = get_global_mouse_position()
-		#is_attacking = false
 		is_dashing = false
 		distance_travelled = 0
 
@@ -132,3 +131,27 @@ func evolve():
 		Global.spikes += 1
 		Global.spike_damage += 4
 		Global.spike_waves += 1
+
+func reset():
+	Global.spike_attackspeed = 1.5
+	Global.spike_damage = 7
+	Global.spikes = 1
+	Global.spike_waves = 1
+	Global.spike_burst_cd = 5
+	Global.spikes_on_cd = false
+	Global.shooting_spikes = false
+	Global.spike_burst_unlocked = false
+	Global.burst_chance = 0
+
+	Global.tent_attackspeed = 1
+	Global.tent_damage = 5
+	Global.tentacles = 1
+	Global.knockback_dist = 0.0
+	Global.dot = 0
+	Global.dot_duration = 0.0
+	Global.tent_range = 1
+
+	Global.bite_attackspeed = 3
+	Global.bite_damage = 15
+	Global.lifesteal = 0.0
+	Global.bite_range = 1

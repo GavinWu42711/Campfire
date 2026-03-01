@@ -1,8 +1,5 @@
 extends Area2D
 
-signal apply_knockback(direction:float, units:float)
-signal take_dot(damage:int, duration:float)
-
 @onready var player: Player = $".."
 
 var attackspeed = 1
