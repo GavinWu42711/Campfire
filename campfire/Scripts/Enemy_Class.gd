@@ -71,8 +71,6 @@ func _physics_process(delta: float) -> void:
 	
 #Sets up the enemy hp-bar
 func set_up_hp_bar() -> void:
-	while hp_bar == null:
-		pass
 	hp_bar.FillMode.FILL_BEGIN_TO_END
 	hp_bar.min_value = 0
 	hp_bar.max_value = max_health

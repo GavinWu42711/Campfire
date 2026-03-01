@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6sdvi5cg481" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://dn01d51mmec8f" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
 [ext_resource type="AudioStream" uid="uid://d4iemrqsysge4" path="res://Assets/Audio/8-Bit Ocean.wav" id="9_chwpn"]
-[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_evi0p"]
 texture = ExtResource("2_7p6j4")

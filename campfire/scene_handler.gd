@@ -14,11 +14,10 @@ var level_2_killed_goal = 10
 var level_2_enemies_killed = 0
 var level_3_killed_goal = 10
 var level_3_enemies_killed = 0
-var level_4_killed_goal = 10
-var level_4_enemies_killed = 0
+var level_4_pass = false
 
 enum LEVEL {MENU, LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, RESTART}
-var current_level:int = 0
+var current_level:int = LEVEL.MENU
 
 #Signal to update clear cons
 signal update_goals_signal(enemy_depth:int)
@@ -39,17 +38,35 @@ func reset_clear_cons() -> void:
 	level_1_enemies_killed = 0
 	level_2_enemies_killed = 0
 	level_3_enemies_killed = 0
-	level_4_enemies_killed = 0
+	level_4_pass = false
 	
-
 func update_goals(enemy_depth:int = 0) -> void:
 	if enemy_depth == 0:
 		pass
 	elif enemy_depth == 1:
-		pass
-
+		level_1_enemies_killed += 1
+	elif enemy_depth == 2:
+		level_2_enemies_killed += 1
+	elif enemy_depth == 3:
+		level_3_enemies_killed += 1
+	elif enemy_depth == 4:
+		level_4_pass = true
+	
 func check_goals() -> void:
-	pass
+	if current_level == LEVEL.MENU:
+		transition_scene(LEVEL.LEVEL_1)
+	elif current_level == LEVEL.LEVEL_1:
+		if level_1_enemies_killed >= level_1_killed_goal:
+			transition_scene(LEVEL.LEVEL_2)
+	elif current_level == LEVEL.LEVEL_2:
+		if level_2_enemies_killed >= level_2_killed_goal:
+			transition_scene(LEVEL.LEVEL_3)
+	elif current_level == LEVEL.LEVEL_3:
+		if level_3_enemies_killed >= level_3_killed_goal:
+			transition_scene(LEVEL.LEVEL_4)
+	elif current_level == LEVEL.LEVEL_4:
+		if level_4_pass:
+			transition_scene(LEVEL.RESTART)
 
 func transition_scene(new_level:int) -> void:
 	if new_level == LEVEL.MENU:
@@ -64,4 +81,3 @@ func transition_scene(new_level:int) -> void:
 		get_tree().change_scene_to_packed(level_4_scene)
 	elif new_level == LEVEL.RESTART:
 		reset_clear_cons()
-		
