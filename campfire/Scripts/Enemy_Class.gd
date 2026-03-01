@@ -59,6 +59,7 @@ func _ready() -> void:
 	apply_knockback.connect(take_knockback)
 	dot_timer = Timer.new()
 	set_up_hp_bar()
+	set_collision_layer_value(1,true)
 
 #Run every second
 func _physics_process(delta: float) -> void:
@@ -132,7 +133,6 @@ func take_damage(damage:int):
 		
 		#Apply damage
 		current_health -= damage
-		print(current_health)
 		queue_animation(ACTION.HURT)
 		
 		if current_health <= 0:
@@ -149,15 +149,18 @@ func die() -> void:
 	alive = false
 	SceneHandler.update_goals_signal.emit(enemy_depth)
 	queue_animation(ACTION.DEATH)
+	await animated_sprite.animation_finished
+	self.queue_free()
 	
 #Checks if any player hitboxes are in range
 func check_attack_hitbox() -> void:
-	for body in enemy_attack_hitbox.get_overlapping_bodies():
-		if body is Player:
-			if can_attack:
-				can_attack = false
-				attack(enemy_attack_damage,body.take_damage_signal)
-				start_attack_cooldown(attack_cooldown)
+	if alive:
+		for body in enemy_attack_hitbox.get_overlapping_bodies():
+			if body is Player:
+				if can_attack:
+					can_attack = false
+					attack(enemy_attack_damage,body.take_damage_signal)
+					start_attack_cooldown(attack_cooldown)
 
 #Deals damage to the player
 func attack(attack_damage:int,hitbox_signal:Signal) -> void:

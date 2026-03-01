@@ -1,13 +1,12 @@
 [gd_scene format=4 uid="uid://clydl34mgc5hh"]
 
 [ext_resource type="Texture2D" uid="uid://byan08c0126pq" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 4/orig_big.png" id="1_vk57k"]
+[ext_resource type="Script" uid="uid://65v6fx6fr3e4" path="res://Scripts/level_1.gd" id="1_wrinw"]
 [ext_resource type="Texture2D" uid="uid://mihmftv63u4e" path="res://Assets/Tilesets and Backgrounds/TileMap (1).png" id="2_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="2_8ffim"]
 [ext_resource type="Texture2D" uid="uid://by68ikyxj23ka" path="res://Assets/Tilesets and Backgrounds/TileSet.png" id="3_6444e"]
 [ext_resource type="Texture2D" uid="uid://cdcno6virmq45" path="res://Assets/Tilesets and Backgrounds/New Project (1) (2).png" id="5_6444e"]
 [ext_resource type="PackedScene" uid="uid://1qs6ffmyuihq" path="res://Scenes/selection_screen.tscn" id="6_evi0p"]
-[ext_resource type="PackedScene" uid="uid://bb6sdvi5cg481" path="res://Scenes/OctopusEnemy.tscn" id="7_xrdnt"]
-[ext_resource type="PackedScene" uid="uid://dn01d51mmec8f" path="res://Scenes/TurtleEnemy.tscn" id="8_wrinw"]
 [ext_resource type="AudioStream" uid="uid://d4iemrqsysge4" path="res://Assets/Audio/8-Bit Ocean.wav" id="9_chwpn"]
 [ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="10_chwpn"]
 
@@ -649,13 +648,14 @@ sources/1 = SubResource("TileSetAtlasSource_lsmp6")
 sources/3 = SubResource("TileSetAtlasSource_xrdnt")
 
 [node name="Level1" type="Node2D" unique_id=602378382]
+script = ExtResource("1_wrinw")
 
 [node name="Orig" type="Sprite2D" parent="." unique_id=184249064]
 position = Vector2(-14, 117.84387)
 scale = Vector2(4.793, 4.89)
 texture = ExtResource("1_vk57k")
 
-[node name="CharacterBody2D" parent="." unique_id=642714803 instance=ExtResource("2_8ffim")]
+[node name="Player" parent="." unique_id=642714803 instance=ExtResource("2_8ffim")]
 position = Vector2(-11, 380)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1411865367]
@@ -679,12 +679,6 @@ position = Vector2(-10, 3130)
 
 [node name="Selection Screen" parent="." unique_id=176216696 instance=ExtResource("6_evi0p")]
 
-[node name="CharacterBody2D2" parent="." unique_id=980513259 instance=ExtResource("7_xrdnt")]
-position = Vector2(398, 481)
-
-[node name="CharacterBody2D3" parent="." unique_id=1992164605 instance=ExtResource("8_wrinw")]
-position = Vector2(-491, 288)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1671222664]
 collision_layer = 4
 collision_mask = 4
@@ -698,6 +692,6 @@ stream = ExtResource("9_chwpn")
 autoplay = true
 script = ExtResource("10_chwpn")
 
-[connection signal="choose_glutton_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_glutton_signal"]
-[connection signal="choose_spikes_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_spikes_signal"]
-[connection signal="choose_tentacles_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_tentacles_signal"]
+[connection signal="choose_glutton_signal" from="Selection Screen" to="Player" method="_on_selection_screen_choose_glutton_signal"]
+[connection signal="choose_spikes_signal" from="Selection Screen" to="Player" method="_on_selection_screen_choose_spikes_signal"]
+[connection signal="choose_tentacles_signal" from="Selection Screen" to="Player" method="_on_selection_screen_choose_tentacles_signal"]

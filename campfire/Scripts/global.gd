@@ -23,8 +23,8 @@ var dot = 0
 var dot_duration = 0.0
 var tent_range = 1
 
-var bite_attackspeed = 3
-var bite_damage = 15
+var bite_attackspeed = 0.1
+var bite_damage = 100
 var lifesteal = 0.0
 var bite_range = 1
 

@@ -59,7 +59,6 @@ func _on_selection_screen_choose_tentacles_signal() -> void:
 	tentacles.scale *= Global.tent_range
 
 func take_damage(damage:int):
-	print("supposed to take damage")
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp

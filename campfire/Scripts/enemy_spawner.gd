@@ -62,7 +62,7 @@ var depth_4_enemy = []
 var spawn_handler_on:bool = false
 var depth:int = 0
 var spawner_cooldown:float = 10 #How long before another wave of enemies should be spawn
-var spawn_next_wave:bool = false
+var spawn_next_wave:bool = true
 
 
 #Emit to start spawning
@@ -79,10 +79,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	spawn_handler()
 
-func start_spawner(depth:int) -> void:
+func start_spawner(var_depth:int) -> void:
 	spawn_handler_on = true
 	spawn_next_wave = true
-	depth = depth
+	depth = var_depth
 	
 func stop_spawner() -> void:
 	spawn_handler_on = false
@@ -122,6 +122,18 @@ func spawn_enemy(enemy_enum_int:int, enemy_depth:int = 0, max_distance:int = 120
 	
 	#Apply the offset relative to the player pos
 	enemy.global_position = player_global_pos + enemy_offset
+	
+	#Find the level node
+	var level_node:Node2D
+	
+	while level_node == null:
+		for child in get_tree().root.get_children():
+			if child is Node2D:
+				level_node = child
+				break
+	
+	#Add enemy as child
+	level_node.add_child(enemy)
 
 #Spawns 10 random enemies from depth 1 list
 func spawn_depth_1_wave() -> void:
