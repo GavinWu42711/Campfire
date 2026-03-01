@@ -22,6 +22,7 @@ var hp = 100
 var max_hp = 100
 var vulnerable = true
 var alive = true
+var armor = 0
 
 func _ready() -> void:
 	take_damage_signal.connect(take_damage)
@@ -95,3 +96,10 @@ func dash():
 		is_dashing = true
 		dash_on_cd = true
 		look_at(get_global_mouse_position())
+
+func _on_glutton_lifesteal_hp(num: float) -> void:
+	hp += num
+	if hp > 100:
+		hp_bar.value = 100
+	else:
+		hp_bar.value = hp

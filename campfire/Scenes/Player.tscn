@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b6hs2xmivlalh" path="res://Scenes/Tentacles.tscn" id="3_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://dwrnit3xbeu4w" path="res://Scenes/Spikes.tscn" id="4_5ixxa"]
 [ext_resource type="PackedScene" uid="uid://c3h7oji1etkud" path="res://Scenes/Glutton.tscn" id="5_nn08x"]
+[ext_resource type="PackedScene" uid="uid://ddoe248tjh7ao" path="res://Scenes/upgrade_spikes.tscn" id="6_nn08x"]
+[ext_resource type="PackedScene" uid="uid://4k3ej70vw0ce" path="res://Scenes/upgrade_tentacles.tscn" id="7_52ee3"]
+[ext_resource type="PackedScene" uid="uid://d4fumy5g21bmn" path="res://Scenes/upgrade_glutton.tscn" id="8_bhhdu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
 bg_color = Color(1, 0, 0, 1)
@@ -70,3 +73,29 @@ limit_left = -5372
 limit_top = -2910
 limit_right = 5342
 limit_bottom = 3130
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=291690414]
+unique_name_in_owner = true
+gizmo_extents = 0.0
+
+[node name="UpgradeScreenSpikes" parent="." unique_id=179100804 instance=ExtResource("6_nn08x")]
+process_mode = 2
+visible = false
+
+[node name="upgrade_tentacles" parent="." unique_id=1336321391 instance=ExtResource("7_52ee3")]
+visible = false
+
+[node name="upgrade_glutton" parent="." unique_id=961335149 instance=ExtResource("8_bhhdu")]
+visible = false
+
+[connection signal="take_damage_signal" from="." to="Spikes" method="_on_character_body_2d_take_damage_signal"]
+[connection signal="lifesteal_hp" from="Glutton" to="." method="_on_glutton_lifesteal_hp"]
+[connection signal="lower_cd" from="UpgradeScreenSpikes" to="Spikes" method="_on_upgrade_screen_spikes_lower_cd"]
+[connection signal="plus_chance" from="UpgradeScreenSpikes" to="Spikes" method="_on_upgrade_screen_spikes_plus_chance"]
+[connection signal="plus_spikes" from="UpgradeScreenSpikes" to="Spikes" method="_on_upgrade_screen_spikes_plus_spikes"]
+[connection signal="plus_dot" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_dot"]
+[connection signal="plus_knockback" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_knockback"]
+[connection signal="plus_range" from="upgrade_tentacles" to="Tentacles" method="_on_upgrade_tentacles_plus_range"]
+[connection signal="plus_dmg" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_dmg"]
+[connection signal="plus_lifesteal" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_lifesteal"]
+[connection signal="plus_range" from="upgrade_glutton" to="Glutton" method="_on_upgrade_glutton_plus_range"]

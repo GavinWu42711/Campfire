@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d4fumy5g21bmn"]
+
+[ext_resource type="Script" uid="uid://drx0ypq341hqv" path="res://Scripts/upgrade_glutton.gd" id="1_t4uyr"]
+
+[node name="upgrade_glutton" type="Node2D" unique_id=961335149]
+process_mode = 2
+script = ExtResource("1_t4uyr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=751269727]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=629189031]
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 0.53333336)
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1355851895]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 282.0
+offset_right = 307.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 50
+text = "+Range"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=104919166]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.10222222
+anchor_right = 0.018197574
+anchor_bottom = -0.10222222
+offset_left = 413.0
+offset_top = 209.0
+offset_right = 690.0
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 50
+text = "+Damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="CanvasLayer/ColorRect" unique_id=70052091]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 232.0
+offset_right = 1097.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 50
+text = "+Lifesteal"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_pressed"]
