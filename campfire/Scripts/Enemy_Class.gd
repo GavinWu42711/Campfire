@@ -34,6 +34,12 @@ var current_enemy_animation = [false,false,false,false,false]
 #Signal for the enemy to take damage; helps with decoupling
 signal take_damage_signal(damage:int)
 
+#Signal to apply DOT
+signal take_dot(damage:int,time:float)
+
+#Signal to apply knockback
+signal apply_knockback(knockback_direction:float,knockback_distance:float)
+
 #Run once when the enemy is first instantiated
 func _ready() -> void:
 	current_health = max_health
