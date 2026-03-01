@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://4k3ej70vw0ce"]
+
+[ext_resource type="Script" uid="uid://b5sopkw4d18oy" path="res://Scripts/upgrade_tentacles.gd" id="1_06ivc"]
+
+[node name="upgrade_tentacles" type="Node2D" unique_id=1336321391]
+process_mode = 2
+script = ExtResource("1_06ivc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=354654522]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1837820367]
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 0.53333336)
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1833769114]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 282.0
+offset_right = 307.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 50
+text = "+Range"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=1757992005]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.062222224
+anchor_right = 0.018197574
+anchor_bottom = -0.10222222
+offset_left = 413.0
+offset_top = 209.0
+offset_right = 690.0
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 50
+text = "+Knockback"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="CanvasLayer/ColorRect" unique_id=746662966]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 232.0
+offset_right = 1097.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 50
+text = "+Poison
+on-hit"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_pressed"]

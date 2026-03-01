@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ddoe248tjh7ao"]
+
+[ext_resource type="Script" uid="uid://60u50u3lcsy" path="res://Scripts/upgrade_spikes.gd" id="1_np2pn"]
+
+[node name="UpgradeScreenSpikes" type="Node2D" unique_id=179100804]
+script = ExtResource("1_np2pn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998554934]
+process_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1690086712]
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 0.53333336)
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1888085844]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 282.0
+offset_right = 307.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 50
+text = "+Spikes"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=1669636594]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 209.0
+offset_right = 690.0
+offset_bottom = 493.0
+theme_override_font_sizes/font_size = 50
+text = "+Chance to
+activate
+spikes
+when hit"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="CanvasLayer/ColorRect" unique_id=1085624555]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 232.0
+offset_right = 1097.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 50
+text = "Lower spike
+shots cd"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_pressed"]
