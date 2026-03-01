@@ -32,6 +32,8 @@ script = ExtResource("1_gntrk")
 texture = ExtResource("2_gntrk")
 
 [node name="Tentacles" parent="." unique_id=79731013 instance=ExtResource("3_5ixxa")]
+process_mode = 4
+visible = false
 position = Vector2(70, 0)
 scale = Vector2(0.3917232, 2.116013)
 
@@ -45,12 +47,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dewec")
 value = 100.0
 
 [node name="Spikes" parent="." unique_id=954835427 instance=ExtResource("4_5ixxa")]
+process_mode = 4
 visible = false
 z_index = -1
 collision_layer = 0
 collision_mask = 0
 
 [node name="Glutton" parent="." unique_id=505521471 instance=ExtResource("5_nn08x")]
+process_mode = 4
 visible = false
 position = Vector2(93, 0)
 scale = Vector2(0.88547325, 1.914584)

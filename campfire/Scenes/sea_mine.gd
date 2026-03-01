@@ -1,0 +1,17 @@
+extends CharacterBody2D
+
+@onready var dormant = true
+@onready var random_scale
+
+func _ready():
+	$AnimatedSprite2D.play("Dormant")
+	random_scale = randf_range(3, 8)#size range
+	scale = Vector2(random_scale, random_scale)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	$AnimatedSprite2D.play("Explode")
+	dormant = false
+	if body is Player:
+		body.take_damage_signal.emit(4*random_scale)
+	await get_tree().create_timer(1).timeout
+	self.queue_free()

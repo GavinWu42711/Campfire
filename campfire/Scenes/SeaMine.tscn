@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://csucldh8tf7yt"]
+
+[ext_resource type="Script" uid="uid://b60pqd6tguvsb" path="res://Scenes/sea_mine.gd" id="1_q5f55"]
+[ext_resource type="Texture2D" uid="uid://dh6yur7wm1yil" path="res://Assets/Tilesets and Backgrounds/SeaMine.png" id="2_12onx"]
+[ext_resource type="Texture2D" uid="uid://bk01x6d6ytweu" path="res://Assets/Tilesets and Backgrounds/New Project (4).png" id="3_uo310"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2dve"]
+atlas = ExtResource("2_12onx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jqqs"]
+atlas = ExtResource("3_uo310")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ajq"]
+atlas = ExtResource("3_uo310")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtuco"]
+atlas = ExtResource("3_uo310")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao25j"]
+atlas = ExtResource("3_uo310")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siyfh"]
+atlas = ExtResource("3_uo310")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stlt1"]
+atlas = ExtResource("3_uo310")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58p65"]
+atlas = ExtResource("3_uo310")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0lwj"]
+atlas = ExtResource("3_uo310")
+region = Rect2(0, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i21g0"]
+atlas = ExtResource("3_uo310")
+region = Rect2(384, 512, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r3ok"]
+atlas = ExtResource("3_uo310")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_piehh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2dve")
+}],
+"loop": true,
+"name": &"Dormant",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jqqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ajq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtuco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ao25j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siyfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stlt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58p65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0lwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i21g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r3ok")
+}],
+"loop": false,
+"name": &"Explode",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2be3"]
+radius = 53.009434
+
+[node name="SeaMine" type="CharacterBody2D" unique_id=117804737]
+script = ExtResource("1_q5f55")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=367923548]
+sprite_frames = SubResource("SpriteFrames_piehh")
+animation = &"Dormant"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1028678759]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=474066773]
+shape = SubResource("CircleShape2D_s2be3")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

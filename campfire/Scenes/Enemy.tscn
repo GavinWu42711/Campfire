@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://quij7qwf8fa"]
 
-[ext_resource type="Script" uid="uid://dnnt8v46g2rvf" path="res://Scripts/EnemyTest.gd" id="1_wovta"]
+[ext_resource type="Script" path="res://Scripts/EnemyTest.gd" id="1_wovta"]
 [ext_resource type="Texture2D" uid="uid://ciqmi0eft46h7" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Attack.png" id="2_mo1ky"]
 [ext_resource type="Texture2D" uid="uid://ny8svstch3k0" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Death.png" id="3_6bs3c"]
 [ext_resource type="Texture2D" uid="uid://udiro3rghrxj" path="res://Assets/Sprites/craftpix-net-800891-octopus-jellyfish-shark-and-turtle-free-sprite-pixel-art/1/Hurt.png" id="4_uoxpr"]
