@@ -8,6 +8,7 @@ visible = false
 script = ExtResource("1_w3yxc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1465631134]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1147908772]
 offset_right = 1154.0

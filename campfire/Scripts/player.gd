@@ -6,8 +6,14 @@ class_name Player
 @onready var glutton: Area2D = $Glutton
 @onready var tentacles: Area2D = $Tentacles
 @onready var hp_bar: ProgressBar = $HpBar
+@onready var upgrade_screen_spikes: Node2D = $UpgradeScreenSpikes
+@onready var upgrade_tentacles: Node2D = $upgrade_tentacles
+@onready var upgrade_glutton: Node2D = $upgrade_glutton
 
 signal take_damage_signal(damage:int)
+signal up_gluttons_bite()
+signal up_tentacles()
+signal up_spikes
 
 var ms = 200
 var click_pos = Vector2()
@@ -22,7 +28,7 @@ var hp = 100
 var max_hp = 100
 var vulnerable = true
 var alive = true
-var armor = 0
+var weapon_type
 
 func _ready() -> void:
 	take_damage_signal.connect(take_damage)
@@ -31,14 +37,17 @@ func _ready() -> void:
 func _on_selection_screen_choose_glutton_signal() -> void:
 	glutton.process_mode = Node.PROCESS_MODE_INHERIT
 	glutton.visible = true
+	weapon_type = "glutton's bite"
 
 func _on_selection_screen_choose_spikes_signal() -> void:
 	spikes.process_mode = Node.PROCESS_MODE_INHERIT
 	spikes.visible = true
+	weapon_type = "spikes"
 
 func _on_selection_screen_choose_tentacles_signal() -> void:
 	tentacles.process_mode = Node.PROCESS_MODE_INHERIT
 	tentacles.visible = true
+	weapon_type = "tentacles"
 
 func take_damage(damage:int):
 	print("supposed to take damage")
@@ -65,7 +74,6 @@ func _physics_process(delta: float) -> void:
 		is_dashing = false
 		distance_travelled = 0
 
-		
 	if position.distance_to(click_pos) > 3 && is_dashing == false:
 		target_pos = (click_pos - position).normalized()
 		look_at(click_pos)
@@ -103,3 +111,17 @@ func _on_glutton_lifesteal_hp(num: float) -> void:
 		hp_bar.value = 100
 	else:
 		hp_bar.value = hp
+
+func evolve():
+	if weapon_type == "glutton's bite":
+		upgrade_glutton.visible = true
+		get_tree().paused = true
+		up_gluttons_bite.emit()
+	elif weapon_type == "tentacles":
+		upgrade_tentacles.visible = true
+		get_tree().paused = true
+		up_tentacles.emit()
+	else:
+		upgrade_screen_spikes.visible = true
+		get_tree().paused = true
+		up_spikes.emit()

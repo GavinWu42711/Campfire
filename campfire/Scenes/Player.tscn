@@ -52,9 +52,7 @@ value = 100.0
 [node name="Spikes" parent="." unique_id=954835427 instance=ExtResource("4_5ixxa")]
 process_mode = 4
 visible = false
-z_index = -1
 collision_layer = 0
-collision_mask = 0
 
 [node name="Glutton" parent="." unique_id=505521471 instance=ExtResource("5_nn08x")]
 process_mode = 4
@@ -62,7 +60,6 @@ visible = false
 position = Vector2(93, 0)
 scale = Vector2(0.88547325, 1.914584)
 collision_layer = 0
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89703414]
 shape = SubResource("CircleShape2D_kpjcp")
@@ -89,6 +86,9 @@ visible = false
 visible = false
 
 [connection signal="take_damage_signal" from="." to="Spikes" method="_on_character_body_2d_take_damage_signal"]
+[connection signal="up_gluttons_bite" from="." to="Glutton" method="_on_character_body_2d_up_gluttons_bite"]
+[connection signal="up_spikes" from="." to="Spikes" method="_on_character_body_2d_up_spikes"]
+[connection signal="up_tentacles" from="." to="Tentacles" method="_on_character_body_2d_up_tentacles"]
 [connection signal="lifesteal_hp" from="Glutton" to="." method="_on_glutton_lifesteal_hp"]
 [connection signal="lower_cd" from="UpgradeScreenSpikes" to="Spikes" method="_on_upgrade_screen_spikes_lower_cd"]
 [connection signal="plus_chance" from="UpgradeScreenSpikes" to="Spikes" method="_on_upgrade_screen_spikes_plus_chance"]
