@@ -137,22 +137,22 @@ func spawn_enemy(enemy_enum_int:int, enemy_depth:int = 0, max_distance:int = 120
 
 #Spawns 10 random enemies from depth 1 list
 func spawn_depth_1_wave() -> void:
-	for i in range(10):
+	for i in range(15):
 		spawn_enemy(depth_1_enemy.pick_random(), 1)
 
 #Spawns 10 random enemies from depth 2 list
 func spawn_depth_2_wave() -> void:
-	for i in range(10):
+	for i in range(15):
 		spawn_enemy(depth_2_enemy.pick_random(), 2)
 
 #Spawns 10 random enemies from depth 3 list
 func spawn_depth_3_wave() -> void:
-	for i in range(10):
+	for i in range(15):
 		spawn_enemy(depth_3_enemy.pick_random(), 3)
 
 #Spawns 10 random enemies from depth 4 list
 func spawn_depth_4_wave() -> void:
-	for i in range(10):
+	for i in range(15):
 		spawn_enemy(depth_4_enemy.pick_random(), 4)
 
 

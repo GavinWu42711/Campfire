@@ -77,7 +77,6 @@ func vulnerability_cd():
 	vulnerable = true
 	
 func _physics_process(delta: float) -> void:
-
 	if Input.is_action_pressed("move"):
 		click_pos = get_global_mouse_position()
 		is_dashing = false

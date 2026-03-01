@@ -19,6 +19,7 @@ var level_4_pass = false
 var level_1_loaded = false
 var level_2_loaded = false
 var level_3_loaded = false
+var level_4_loaded = false
 
 
 enum LEVEL {MENU, LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, RESTART}
@@ -38,7 +39,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	check_goals()
-	print(level_1_enemies_killed)
 
 func reset_clear_cons() -> void:
 	level_1_enemies_killed = 0
@@ -94,3 +94,4 @@ func transition_scene(new_level:int) -> void:
 	elif new_level == LEVEL.RESTART:
 		current_level = LEVEL.RESTART
 		reset_clear_cons()
+		

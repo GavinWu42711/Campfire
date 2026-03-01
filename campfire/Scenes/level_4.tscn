@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://v1545633i6d2"]
 
-[ext_resource type="Script" path="res://Scripts/level_4.gd" id="1_7huqf"]
+[ext_resource type="Script" uid="uid://7lc5gorkut4k" path="res://Scripts/level_4.gd" id="1_7huqf"]
 [ext_resource type="Texture2D" uid="uid://bkq1m43dl7vcd" path="res://Assets/Tilesets and Backgrounds/free-underwater-world-pixel-art-backgrounds/background 3/orig_big.png" id="1_i1va2"]
 [ext_resource type="Texture2D" uid="uid://mihmftv63u4e" path="res://Assets/Tilesets and Backgrounds/TileMap (1).png" id="2_kdkq3"]
 [ext_resource type="Texture2D" uid="uid://by68ikyxj23ka" path="res://Assets/Tilesets and Backgrounds/TileSet.png" id="3_wi344"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://r1lfrw2x34u4" path="res://Scenes/Player.tscn" id="5_wk15n"]
 [ext_resource type="PackedScene" uid="uid://csucldh8tf7yt" path="res://Scenes/SeaMine.tscn" id="6_5a8oa"]
 [ext_resource type="AudioStream" uid="uid://cwoqs4tr1ev8h" path="res://Assets/Audio/z3r0 - 8bit Syndrome _ 8bit Horror - COPYRIGHT FREE MUSIC.mp3" id="8_3ntyy"]
-[ext_resource type="Script" uid="uid://cisvpmldl5br3" path="res://Scenes/audio_stream_player_2d.gd" id="9_3ntyy"]
+[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="9_3ntyy"]
 [ext_resource type="PackedScene" uid="uid://kxwpgqqdwyjb" path="res://Scenes/anchor.tscn" id="10_7huqf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvrgg"]
