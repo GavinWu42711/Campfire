@@ -83,9 +83,7 @@ func die():
 	else:
 		$AnimatedSprite2D.play("spike_death")
 	await get_tree().create_timer(1).timeout
-	queue_free()
 	reset()
-	SceneHandler.transition_scene(SceneHandler.LEVEL.RESTART)
 
 func vulnerability_cd():
 	await get_tree().create_timer(1).timeout

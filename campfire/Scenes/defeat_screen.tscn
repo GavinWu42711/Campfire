@@ -3,9 +3,12 @@
 [ext_resource type="Script" uid="uid://d2yv3v0i4t418" path="res://Scenes/defeat_screen.gd" id="1_0hunr"]
 
 [node name="DefeatScreen" type="Node2D" unique_id=2091064201]
+process_mode = 2
 script = ExtResource("1_0hunr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2124918410]
+process_mode = 3
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=891063188]
 anchors_preset = -1
