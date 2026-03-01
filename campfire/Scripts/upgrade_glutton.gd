@@ -14,13 +14,16 @@ func _on_button_pressed() -> void:
 	plus_range_upgrades += 0.2
 	plus_range.emit(plus_range_upgrades)
 	screen.visible = false
+	get_tree().paused = false
 
 func _on_button_2_pressed() -> void:
 	plus_dmg_upgrades += 10
 	plus_range.emit(plus_dmg_upgrades)
 	screen.visible = false
+	get_tree().paused = false
 
 func _on_button_3_pressed() -> void:
 	plus_lifesteal_upgrades += 0.08
 	plus_lifesteal.emit(plus_lifesteal_upgrades)
 	screen.visible = false
+	get_tree().paused = false

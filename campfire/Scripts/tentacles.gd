@@ -7,7 +7,7 @@ signal take_dot(damage:int, duration:float)
 
 var attackspeed = 1
 var can_attack = true
-var damage = 3
+var damage = 5
 var tentacles = 1
 var knockback_dist = 0.0
 var dot = 0
@@ -37,3 +37,7 @@ func _on_upgrade_tentacles_plus_knockback(num: int) -> void:
 
 func _on_upgrade_tentacles_plus_range(num: float) -> void:
 	tentacles_wpn.scale *= num
+
+func _on_character_body_2d_up_tentacles() -> void:
+	damage += 7
+	tentacles += 1

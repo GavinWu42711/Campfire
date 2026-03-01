@@ -31,6 +31,13 @@ enum ACTION {ATTACK,DEATH,HURT,IDLE,WALK}
 var queued_enemy_animation = [false, false, false, false, false] #Each boolean corresponds to an action in the enum
 var current_enemy_animation = [false,false,false,false,false]
 
+#DOT
+var dot_applied:bool = false
+var dot_applied_damage:int = 0
+var dot_applied_time_left:float = 0
+var dot_applied_last_proc:float = 0
+var dot_timer:Timer
+
 #Signal for the enemy to take damage; helps with decoupling
 signal take_damage_signal(damage:int)
 
@@ -44,14 +51,57 @@ signal apply_knockback(knockback_direction:float,knockback_distance:float)
 func _ready() -> void:
 	current_health = max_health
 	take_damage_signal.connect(take_damage)
+	take_dot.connect(apply_dot)
+	apply_knockback.connect(take_knockback)
+	dot_timer = Timer.new()
 
 #Run every second
 func _physics_process(delta: float) -> void:
 	chase_player(delta)
 	check_attack_hitbox()
-	move_and_slide()
 	animation_handler()
+	dot_handler()
+	move_and_slide()
 	
+#Apply knockback to the enemy; knockback_direction is a heading
+func take_knockback(knockback_direction:float,knockback_distance:float) -> void:
+	var knockback:Vector2 = Vector2.UP * knockback_distance
+	knockback.rotated(knockback_direction)
+	self.translate(knockback)
+	
+#DOT procs ever 0.5s
+func apply_dot(damage:int,time:float) -> void:
+	dot_applied = true
+	dot_applied_damage = damage
+	
+	#Start a new DOT timer or replenish existing DOT timer
+	if dot_timer.time_left < time:
+		if dot_timer.time_left == 0:
+			dot_timer.wait_time = time
+		else:
+			dot_timer.stop()
+			dot_timer.wait_time = time
+		dot_applied_last_proc = time
+		dot_timer.start()
+
+#Checks and handles DOT every second
+func dot_handler() -> void:
+	if dot_applied:
+		#Updates how much longer there is for DOT
+		dot_applied_time_left = dot_timer.time_left
+		
+		#Checks if it's been 5 or more seconds since DOT was last proc'd
+		if dot_applied_last_proc - dot_applied_time_left >= 0.5:
+			dot_applied_last_proc = dot_applied_time_left
+			current_health -= dot_applied_damage
+			
+			#If the enemy dies
+			if current_health <= 0:
+				current_health = 0
+				die()
+		
+		if dot_applied_time_left == 0:
+			dot_applied = false
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
@@ -64,11 +114,11 @@ func take_damage(damage:int):
 		
 		#Apply damage
 		current_health -= damage
+		print(current_health)
 		queue_animation(ACTION.HURT)
 		
 		if current_health <= 0:
 			current_health = 0
-			alive = false
 			die()
 		
 #Starts a timer to allow the enemy to take damage again
@@ -78,6 +128,7 @@ func take_damage_cooldown(cooldown_length) -> void:
 
 #When the enemy dies
 func die() -> void:
+	alive = false
 	queue_animation(ACTION.DEATH)
 	
 #Checks if any player hitboxes are in range

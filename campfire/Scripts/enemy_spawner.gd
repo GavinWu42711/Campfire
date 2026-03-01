@@ -7,14 +7,56 @@ var jellyfish_enemy:PackedScene = preload("res://Scenes/JellyfishEnemy.tscn")
 var octopus_enemy:PackedScene = preload("res://Scenes/OctopusEnemy.tscn")
 var swordfish_enemy:PackedScene = preload("res://Scenes/SwordfishEnemy.tscn")
 var turtle_enemy:PackedScene = preload("res://Scenes/TurtleEnemy.tscn")
+var alligator_enemy:PackedScene = preload("res://Scenes/AlligatorEnemy.tscn")
+var blue_fish_enemy:PackedScene = preload("res://Scenes/BlueFishEnemy.tscn")
+var green_fish_enemy:PackedScene = preload("res://Scenes/GreenFishEnemy.tscn")
+var mermaid_staff_enemy:PackedScene = preload("res://Scenes/MermaidStaffEnemy.tscn")
+var mermaid_sword_enemy:PackedScene = preload("res://Scenes/MermaidSwordEnemy.tscn")
+var orca_enemy:PackedScene = preload("res://Scenes/OrcaEnemy.tscn")
+var shark_enemy:PackedScene = preload("res://Scenes/SharkEnemy.tscn")
 
 #Compiled list of enemies
-var enemy_list = [anglerfish_enemy, eel_enemy, jellyfish_enemy, octopus_enemy, swordfish_enemy, turtle_enemy]
-enum ENEMY_ENUM {ANGLERFISH_ENEMY, EEL_ENEMY, JELLYFISH_ENEMY, OCTOPUS_ENEMY, SWORDFISH_ENEMY, TURTLE_ENEMY}
-var depth_1_enemy = [ENEMY_ENUM.EEL_ENEMY]
-var depth_2_enemy = [ENEMY_ENUM.EEL_ENEMY]
-var depth_3_enemy = [ENEMY_ENUM.EEL_ENEMY]
-var depth_4_enemy = [ENEMY_ENUM.EEL_ENEMY]
+var enemy_list = [anglerfish_enemy,
+					eel_enemy, 
+					jellyfish_enemy, 
+					octopus_enemy, 
+					swordfish_enemy, 
+					turtle_enemy,
+					alligator_enemy, 
+					blue_fish_enemy, 
+					green_fish_enemy,  
+					mermaid_staff_enemy,  
+					mermaid_sword_enemy,  
+					orca_enemy, 
+					shark_enemy]
+					
+enum ENEMY_ENUM {ANGLERFISH_ENEMY, #3
+						EEL_ENEMY, #3
+						JELLYFISH_ENEMY, #1
+						OCTOPUS_ENEMY, #2
+						SWORDFISH_ENEMY, #2
+						TURTLE_ENEMY,#1
+						ALLIGATOR_ENEMY, #3
+						BLUE_FISH_ENEMY, #1
+						GREEN_FISH,ENEMY, #1
+						MERMAID_STAFF_ENEMY, #3
+						MERMAID_SWORD_ENEMY, #3
+						ORCA_ENEMY, #2 
+						SHARK_ENEMY} #2
+						
+var depth_1_enemy = [ENEMY_ENUM.BLUE_FISH_ENEMY,
+					ENEMY_ENUM.GREEN_FISH,
+					ENEMY_ENUM.TURTLE_ENEMY, 
+					ENEMY_ENUM.JELLYFISH_ENEMY]
+var depth_2_enemy = [ENEMY_ENUM.SWORDFISH_ENEMY,
+					ENEMY_ENUM.ORCA_ENEMY,
+					ENEMY_ENUM.SHARK_ENEMY]
+var depth_3_enemy = [ENEMY_ENUM.EEL_ENEMY, 
+					ENEMY_ENUM.ANGLERFISH_ENEMY, 
+					ENEMY_ENUM.ALLIGATOR_ENEMY, 
+					ENEMY_ENUM.MERMAID_STAFF_ENEMY, 
+					ENEMY_ENUM.MERMAID_SWORD_ENEMY]
+var depth_4_enemy = []
 
 #To determine what and when to spawn
 var spawn_handler_on:bool = false

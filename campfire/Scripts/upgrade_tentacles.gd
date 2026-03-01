@@ -13,6 +13,7 @@ func _on_button_pressed() -> void:
 	plus_range_upgrades += 0.2
 	plus_range.emit(plus_range_upgrades)
 	screen.visible = false
+	
 
 func _on_button_2_pressed() -> void:
 	plus_knockback_upgrades += 100
