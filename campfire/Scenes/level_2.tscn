@@ -826,6 +826,7 @@ rendering_quadrant_size = 32
 physics_quadrant_size = 32
 
 [node name="Player" parent="." unique_id=642714803 instance=ExtResource("6_cggpd")]
+scale = Vector2(1, 1)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=669978079]
 position = Vector2(-5372, -95)
