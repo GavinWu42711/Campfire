@@ -88,6 +88,7 @@ func animation_handler() -> void:
 	
 #Makes the enemy take damage
 func take_damage(damage:int):
+	print("taking damage")
 	if can_take_damage and alive:
 		#Start i-frame
 		can_take_damage = false
