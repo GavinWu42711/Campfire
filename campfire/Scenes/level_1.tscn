@@ -683,6 +683,14 @@ position = Vector2(398, 481)
 [node name="CharacterBody2D3" parent="." unique_id=1992164605 instance=ExtResource("8_wrinw")]
 position = Vector2(-491, 288)
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1672867733]
+disable_mode = 2
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1697366329]
+polygon = PackedVector2Array(-5347, 273, -4624, 27, -4163, 3, -3639, 202, -3297, 194, -2884, 43, -2328, 11, -1930, 170, -1231, 194, -834, 43, -294, 43, 191, 194, 549, 194, 1121, -13, 1907, 114, 2869, 98, 3862, 82, 4180, 90, 4394, 59, 4990, 178, 5364, 202, 5761, 273, 5761, -3136, -5617, -3120, -5609, 225)
+
 [connection signal="choose_glutton_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_glutton_signal"]
 [connection signal="choose_spikes_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_spikes_signal"]
 [connection signal="choose_tentacles_signal" from="Selection Screen" to="CharacterBody2D" method="_on_selection_screen_choose_tentacles_signal"]
