@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://1qs6ffmyuihq"]
+
+[ext_resource type="Script" uid="uid://5el7cfnds3gm" path="res://Scripts/selection_screen.gd" id="1_w3yxc"]
+
+[node name="Selection Screen" type="Node2D" unique_id=176216696]
+process_mode = 2
+visible = false
+script = ExtResource("1_w3yxc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1465631134]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1147908772]
+offset_right = 1154.0
+offset_bottom = 675.0
+color = Color(0, 0, 0, 0.53333336)
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=1865969454]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 240.0
+offset_right = 368.0
+offset_bottom = 455.0
+theme_override_font_sizes/font_size = 50
+text = "Tentacles:
++Atk Speed 
+-Attack"
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=847348947]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 243.0
+offset_right = 710.0
+offset_bottom = 458.0
+theme_override_font_sizes/font_size = 50
+text = "Glutton:
+-Atk Speed
++Attack"
+
+[node name="Button3" type="Button" parent="CanvasLayer/ColorRect" unique_id=906276839]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 253.0
+offset_right = 1049.0
+offset_bottom = 455.0
+theme_override_font_sizes/font_size = 50
+text = "Spikes:
+Mixed"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_pressed"]

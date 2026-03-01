@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3h7oji1etkud"]
 
-[ext_resource type="Script" uid="uid://b5i73gck28tkx" path="res://Scenes/glutton.gd" id="1_ojcnx"]
+[ext_resource type="Script" uid="uid://b5i73gck28tkx" path="res://Scripts/glutton.gd" id="1_ojcnx"]
 [ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://Assets/icon.svg" id="2_ojcnx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxa1p"]
