@@ -84,6 +84,7 @@ func die():
 		$AnimatedSprite2D.play("spike_death")
 	await get_tree().create_timer(1).timeout
 	reset()
+	get_tree().change_scene_to_file("res://Scenes/defeat_screen.tscn")
 
 func vulnerability_cd():
 	await get_tree().create_timer(1).timeout
