@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	for body in get_overlapping_bodies():
 		if can_attack && body is Enemy:
 			body.take_damage_signal.emit(Global.spike_damage * Global.spikes)
-			animation_player.play("attack")
+			
 			can_attack = false
 			attack_cd()
 	if !Global.spikes_on_cd && Global.spike_burst_unlocked:
@@ -48,3 +48,6 @@ func _on_character_body_2d_take_damage_signal(damage: int) -> void:
 	chance = randi_range(1, 100)
 	if chance <= Global.burst_chance:
 		spike_burst()
+
+func _on_character_body_2d_up_spikes() -> void:
+	pass # Replace with function body.

@@ -16,6 +16,11 @@ var level_3_killed_goal = 10
 var level_3_enemies_killed = 0
 var level_4_pass = false
 
+var level_1_loaded = false
+var level_2_loaded = false
+var level_3_loaded = false
+
+
 enum LEVEL {MENU, LEVEL_1, LEVEL_2, LEVEL_3, LEVEL_4, RESTART}
 var current_level:int = LEVEL.MENU
 

@@ -7,6 +7,7 @@ process_mode = 2
 script = ExtResource("1_t4uyr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=751269727]
+process_mode = 3
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=629189031]
@@ -49,6 +50,9 @@ theme_override_font_sizes/font_size = 50
 text = "+Lifesteal"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="button_down" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_button_down"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="button_down" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_button_down"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button3" to="." method="_on_button_3_pressed"]

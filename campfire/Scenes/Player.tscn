@@ -265,6 +265,6 @@ visible = false
 libraries/ = SubResource("AnimationLibrary_c43xd")
 
 [connection signal="take_damage_signal" from="." to="Spikes" method="_on_character_body_2d_take_damage_signal"]
-[connection signal="up_gluttons_bite" from="." to="Glutton" method="_on_character_body_2d_up_gluttons_bite"]
-[connection signal="up_spikes" from="." to="Spikes" method="_on_character_body_2d_up_spikes"]
-[connection signal="up_tentacles" from="." to="Tentacles" method="_on_character_body_2d_up_tentacles"]
+[connection signal="up_gluttons_bite" from="." to="upgrade_glutton" method="_on_character_body_2d_up_gluttons_bite"]
+[connection signal="up_spikes" from="." to="UpgradeScreenSpikes" method="_on_character_body_2d_up_spikes"]
+[connection signal="up_tentacles" from="." to="upgrade_tentacles" method="_on_character_body_2d_up_tentacles"]

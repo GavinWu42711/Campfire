@@ -63,7 +63,6 @@ func take_damage(damage:int):
 	if vulnerable && alive:
 		Global.hp -= damage
 		hp_bar.value = Global.hp
-		animation_player.play("hurt")
 		vulnerable = false
 		vulnerability_cd()
 	if Global.hp <= 0:
@@ -78,8 +77,8 @@ func vulnerability_cd():
 	vulnerable = true
 	
 func _physics_process(delta: float) -> void:
+
 	if Input.is_action_pressed("move"):
-		$AnimationPlayer.play("swim")
 		click_pos = get_global_mouse_position()
 		is_dashing = false
 		distance_travelled = 0
@@ -91,7 +90,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		$AnimationPlayer.play("idle")
+
 
 	Global.player_pos = self.global_position
 	
@@ -118,18 +117,17 @@ func dash():
 
 func evolve():
 	if Global.weapon == "glutton's bite":
-		upgrade_glutton.visible = true
-		get_tree().paused = true
+		up_gluttons_bite.emit()
 		Global.bite_damage += 10
 		Global.bite_attackspeed -= 0.2
 	elif Global.weapon == "tentacles":
-		upgrade_tentacles.visible = true
+		up_tentacles.emit()
 		get_tree().paused = true
 		Global.tent_damage += 5
 		Global.tentacles += 1
 	else:
 		Global.spike_burst_unlocked = true
-		upgrade_screen_spikes.visible = true
+		up_spikes.emit()
 		get_tree().paused = true
 		Global.spikes += 1
 		Global.spike_damage += 4

@@ -6,6 +6,7 @@
 script = ExtResource("1_hl01w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1807864616]
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1722674870]
 anchors_preset = -1

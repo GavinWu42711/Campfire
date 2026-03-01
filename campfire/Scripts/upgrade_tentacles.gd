@@ -14,3 +14,6 @@ func _on_button_3_pressed() -> void:
 	Global.dot += 3
 	Global.dot_duration += 1.5
 	screen.visible = false
+
+func _on_character_body_2d_up_tentacles() -> void:
+	screen.visible = true

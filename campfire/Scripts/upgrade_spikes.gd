@@ -13,3 +13,6 @@ func _on_button_2_pressed() -> void:
 func _on_button_3_pressed() -> void:
 	Global.spike_burst_cd -= 0.5
 	screen.visible = false
+
+func _on_character_body_2d_up_spikes() -> void:
+	screen.visible = true
