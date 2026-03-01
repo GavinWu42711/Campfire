@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var glutton: Area2D = $"."
-@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 var can_attack = true
 
@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 		if can_attack && body is Enemy:
 			body.take_damage_signal.emit(Global.bite_damage)
 			Global.hp += Global.bite_damage * Global.lifesteal
-			
+			animated_sprite_2d.play("attack")
 			can_attack = false
 			attack_cd()
 

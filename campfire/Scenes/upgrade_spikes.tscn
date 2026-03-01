@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ddoe248tjh7ao"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade_spikes.gd" id="1_np2pn"]
+[ext_resource type="Script" uid="uid://60u50u3lcsy" path="res://Scripts/upgrade_spikes.gd" id="1_np2pn"]
 
 [node name="UpgradeScreenSpikes" type="Node2D" unique_id=179100804]
+process_mode = 2
 script = ExtResource("1_np2pn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=998554934]
-process_mode = 2
+process_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1690086712]
 visible = false
