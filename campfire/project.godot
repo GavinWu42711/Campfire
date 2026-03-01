@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Campfire"
+run/main_scene="uid://bv0et8ndjqwyt"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/icon.svg"
 

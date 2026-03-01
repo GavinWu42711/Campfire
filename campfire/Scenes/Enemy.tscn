@@ -188,6 +188,7 @@ rotation_speed = 0.0
 enemy_attack_damage = 0
 enemy_hitbox = NodePath("CollisionShape2D")
 enemy_attack_hitbox = NodePath("Area2D")
+i_frame_length = 100.0
 follow_distance = 50
 animated_sprite = NodePath("AnimatedSprite2D")
 

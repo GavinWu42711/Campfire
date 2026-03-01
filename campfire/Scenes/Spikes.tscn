@@ -7,6 +7,7 @@
 radius = 68.18358
 
 [node name="Area2D" type="Area2D" unique_id=79731013]
+scale = Vector2(1.875, 1.875)
 script = ExtResource("1_vo256")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130536545]
@@ -15,4 +16,4 @@ texture = ExtResource("2_vo256")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255091381]
 shape = SubResource("CircleShape2D_fxa1p")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
