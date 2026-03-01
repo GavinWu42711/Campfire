@@ -69,7 +69,6 @@ func take_knockback(knockback_direction:float,knockback_distance:float) -> void:
 	knockback.rotated(knockback_direction)
 	self.translate(knockback)
 	
-	
 #DOT procs ever 0.5s
 func apply_dot(damage:int,time:float) -> void:
 	dot_applied = true
