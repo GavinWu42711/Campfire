@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c75ajskb2s3x3" path="res://Assets/Sprites/Shark Enemy/download.png" id="2_iyflu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fxa1p"]
-radius = 106.30146
+radius = 183.46117
 
 [node name="Area2D" type="Area2D" unique_id=79731013]
 collision_layer = 0
